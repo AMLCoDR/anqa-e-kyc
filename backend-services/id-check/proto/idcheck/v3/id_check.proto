@@ -1,0 +1,152 @@
+syntax = "proto3";
+
+package idcheck.v3;
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+// import "validate/validate.proto";
+
+// IdCheckService contains rpc methods used for verifying related parties
+// identity.
+service IdCheckService {
+  // Check performs an ID check against the data source indicated by the type
+  // and country of the ID being checked
+  rpc Check(CheckRequest) returns (CheckResponse);
+  // Get retrieves details of the latest ID check for the person specified
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      get : "/idchecks/v3/{entity_id}"
+    };
+  };
+  // Delete deletes ID check(s) for the person specified
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+// CheckRequest contains information required to perform an ID check
+message CheckRequest {
+  string entity_id = 1;
+  oneof id_check {
+    Passport passport = 2;
+    Licence licence = 3;
+    Address address = 4;
+    NationalId national_id = 5;
+    Watchlist watchlist = 6;
+  }
+  Person person = 7;
+}
+// CheckResponse returns the result of an ID check
+message CheckResponse { IdCheck id_check = 1; }
+
+// GetRequest contains information required to retrieve a previous ID check
+message GetRequest { string entity_id = 1; }
+// GetResponse returns the requested ID check
+message GetResponse { repeated IdCheck checks = 1; }
+
+// DeleteRequest specifies the person (entity) to delete ID checks for
+message DeleteRequest { string entity_id = 1; }
+// DeleteResponse is returned by the Delete method. It is empty so can be safely
+// ignored.
+message DeleteResponse {};
+
+// IdType is the list of ID types supported by the application
+enum IdType {
+  ID_TYPE_PASSPORT = 0;
+  ID_TYPE_LICENCE = 1;
+  ID_TYPE_ADDRESS = 2;
+  ID_TYPE_NATIONALID = 3;
+  ID_TYPE_WATCHLIST = 4;
+}
+
+// Status is the list of values that can be used when recording the status of an
+// ID check
+//
+// From DataZoo docs:
+// For each API request, you will receive a Status indicating whether the
+// request has been successful. There are 3 different status values: 	0 -
+// Indicates that a full match on the identity has been returned. 	1 - Indicates
+// that the Identity was matched, but the name provided was incorrect. 	2 -
+// Indicates all information provided was incorrect. 	3 - Indicates the data
+// source(s) being utilised are not working.
+enum Status {
+  STATUS_FULL_MATCH = 0;
+  STATUS_PART_MATCH = 1;
+  STATUS_NO_MATCH = 2;
+  STATUS_NO_DATA = 3;
+  STATUS_ERROR = 4;
+  STATUS_UNCHECKED = 5;
+}
+
+// Person contains personal details to be used during the ID check process.
+message Person {
+  string first_name = 1;
+  string middle_name = 2;
+  string last_name = 3;
+  string birth_date = 4;
+}
+
+// Passport contains information required when the ID check is based on a
+// passport.
+message Passport {
+  string number = 1;
+  string expiry = 2;
+}
+
+// Licence contains information required when the ID check is based on a drivers
+// licence.
+message Licence {
+  string number = 1;
+  string version = 2;
+}
+
+// Address contains information required to verify an address
+message Address {
+  string unit_number = 1;
+  string street_number = 2;
+  string street_name = 3;
+  string street_type = 4;
+  string suburb = 5;
+  string city = 6;
+  string region = 7;
+  string postcode = 8;
+  string country = 9;
+}
+
+// NationalId contains information required when the ID check is based on a
+// National ID card.
+message NationalId { string number = 1; }
+
+// Watchlist is the placeholder for checks of type Watchlist
+message Watchlist {}
+
+// Match contains name-value pairs that can be used to augment an ID check
+// response to give more useful information to the client. Intended to map the
+// provider's response to something more human-readable.
+message Match {
+  string label = 1;
+  bool match = 2;
+}
+
+// IdCheck contains information about a previous ID check.
+// Includes the request data as a record, with sensitive fields redacted.
+// The msg field is a human-readable interpretation of the response and may be
+// further extended by the generic name-value info fields. The detail field is a
+// stringified copy of the response
+message IdCheck {
+  string id = 1;
+  string entity_id = 2;
+  IdType id_type = 3;
+  bool verified = 4;
+  Status status = 5;
+  string detail = 6;
+  google.protobuf.Timestamp updated_at = 7;
+  string msg = 8;
+  repeated Match matches = 9;
+  oneof id_check {
+    Passport passport = 10;
+    Licence licence = 11;
+    Address address = 12;
+    NationalId national_id = 13;
+    Watchlist watchlist = 14;
+  }
+  Person person = 15;
+}

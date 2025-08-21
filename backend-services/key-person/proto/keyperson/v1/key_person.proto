@@ -1,0 +1,162 @@
+syntax = "proto3";
+
+package keyperson.v1;
+
+// option go_package =
+// "github.com/anqaml/key-person/gen/proto/go/keyperson/v1;keyperson";
+
+import "google/api/annotations.proto";
+import "vcissuer/v1/vc_issuer.proto";
+
+// KeyPersonService contains rpc methods used to manage a customer's key people.
+// A key person only exists in the context of a customer — it is effectively the
+// connection between an individual
+service KeyPersonService {
+  // Create creates an person for the specified tenant
+  rpc Create(CreateRequest) returns (CreateResponse);
+  // Query supports querying for entities using criteria in the QueryRequest.
+  // The methods returns a paged list of entities.
+  rpc Query(QueryRequest) returns (QueryResponse) {
+    // query string params are mapped to QueryRequest object
+    option (google.api.http) = {
+      get : "/key-people/v1"
+    };
+  };
+  // Get retrieves the person specified in the GetRequest.
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      get : "/key-people/v1/{person_id}"
+    };
+  };
+  // Update updates an person.
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  // SetRisk sets an person's overall KYC risk.
+  rpc SetRisk(SetRiskRequest) returns (SetRiskResponse);
+  // Delete deletes the specified person
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  // Certify is used to set certify the successful outcome of
+  // CDD for the specified person.
+  rpc Certify(CertifyRequest) returns (CertifyResponse);
+  // Decertify decertifies the specified person
+  rpc Decertify(DecertifyRequest) returns (DecertifyResponse);
+}
+
+// CreateRequest contains information needed to create a new person.
+message CreateRequest { Person person = 1; }
+// CreateResponse returns the newly created person for the Create method.
+message CreateResponse { Person person = 1; }
+
+// QueryRequest represents an person query with options to filter by
+// free text, and other attributes. Offset and limit are used for
+// response pagination.
+message QueryRequest {
+  int64 offset = 1;
+  int64 limit = 2;
+  string search_text = 3;
+  oneof risk {
+    int32 null = 4;
+    Risk value = 5;
+  }
+  string source_ref = 6;
+}
+// QueryResponse returns a paged list of entities matchin QueryRequest criteria.
+// Matches provides the total number of records matching the query regardless of
+// limit.
+message QueryResponse {
+  repeated Person cursor = 1;
+  int64 matches = 2;
+}
+
+// GetRequest is used to specify the person to retrieve. Degrees can be set
+// to return related entites.
+message GetRequest {
+  string person_id = 1;
+  int32 degrees = 2;
+}
+// GetResponse returns a person based on the person id
+// provided inthe GetRequest.
+message GetResponse { Person person = 1; }
+
+// UpdateRequest is used when calling the Update method. It contains the
+// complete person to update.
+message UpdateRequest { Person person = 1; }
+// UpdateResponse returns the person updated by the Update method.
+message UpdateResponse { Person person = 1; }
+
+// SetRiskRequest is used to specify the risk level when using the SetRisk
+// method to record a customer's (person_id) overall risk.
+message SetRiskRequest {
+  string person_id = 1;
+  Risk risk = 2;
+}
+// SetRiskResponse is returned by the SetRisk method. It is empty so can be
+// safely ignored.
+message SetRiskResponse {}
+
+// DeleteRequest contains arguments need by the Delete method. Specifically, the
+// id of the person to delete.
+message DeleteRequest { string person_id = 1; }
+// DeleteResponse is returned by the Delete method. It is empty so can be safely
+// ignored.
+message DeleteResponse {}
+
+// CertifyRequest contains arguments for the Certify method. Specifically, the
+// id of the person to certify.
+message CertifyRequest {
+  string person_id = 1;
+  vcissuer.v1.Credential credential = 2;
+}
+// CertifyResponse is returned by the Certify method. It is empty so can be
+// safely ignored.
+message CertifyResponse {}
+
+// DecertifyRequest contains arguments for the Decertify method. Specifically,
+// the id of the person to decertify.
+message DecertifyRequest { string person_id = 1; }
+// DecertifyResponse is returned by the Decertify method. It is empty so can be
+// safely ignored.
+message DecertifyResponse {}
+
+// Risk is the list of values that can be used when setting a person's overall
+// level of risk.
+enum Risk {
+  RISK_UNSPECIFIED = 0;
+  RISK_LOW = 1;
+  RISK_MODERATE = 2;
+  RISK_HIGH = 3;
+}
+
+// Person represents details of a person required for CDD.
+message Person {
+  string id = 1;
+  string given_names = 2;
+  string family_name = 3;
+  // uniquely identifies individual (vs customer key person)
+  string identity_id = 4;
+  string customer_id = 5;
+  bool consent_given = 6;
+  bool own_behalf = 7;
+  // Capacity lists values to use when choosing a key person's
+  // capacity to act for the customer
+  enum Capacity {
+    CAPACITY_UNSPECIFIED = 0;
+    CAPACITY_CONTROL = 1;
+    CAPACITY_AGENT = 2;
+  }
+  Capacity capacity = 8;
+  Risk risk = 9;
+  string source_ref = 10;
+  vcissuer.v1.Credential certificate = 11;
+}
+
+// // A certificate. The exact encoding depends upon the type of certificate.
+// // For X509, this is a PEM encoded Certificate.
+// message Certificate {
+//   // Types of certificates supported
+//   enum CertificateType {
+//     CERTIFICATE_TYPE_UNSPECIFIED = 0;
+//     CERTIFICATE_TYPE_X509 = 1;
+//   }
+//   CertificateType type = 1;
+//   bytes certificate = 2;
+// }

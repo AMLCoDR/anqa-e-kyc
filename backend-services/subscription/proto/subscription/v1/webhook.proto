@@ -1,0 +1,138 @@
+syntax = "proto3";
+
+package subscription.v1;
+
+import "google/api/annotations.proto";
+// import "validate/validate.proto";
+
+/* SubscriptionService contains rpc methods used for managing an organisation's subscriptions. */
+service WebhookService {
+	// Customer is designed specifically to be called by Stripe's Customer webhooks
+	rpc Customer(CustomerRequest) returns (CustomerResponse){
+		option (google.api.http) = {
+			post: "/subscription/v1/webhook/customer"
+			body: "*"
+		};
+	};
+	// Subscription is designed specifically to be called by Stripe's Subscription webhooks
+	rpc Subscription(SubscriptionRequest) returns (SubscriptionResponse){
+		option (google.api.http) = {
+			post: "/subscription/v1/webhook/subscription"
+			body: "*"
+		};
+	};
+}
+
+// CustomerRequest wraps a request from Stripe's Customer webhook
+message CustomerRequest {
+	string id = 1;
+	string object = 2;
+    int64 created = 3;
+    CustomerData data = 4;
+    bool livemode = 5;
+    Request request = 6;
+    string type = 7;
+}
+// CustomerResponse is returned by the Customer method
+message CustomerResponse{}
+
+// SubscriptionRequest wraps a request from Stripe's Subscription webhook
+message SubscriptionRequest {
+	string id = 1;
+	string object = 2;
+    int64 created = 3;
+    SubscriptionData data = 4;
+    bool livemode = 5;
+    Request request = 6;
+    string type = 7;
+}
+// SubscriptionResponse is returned by the Subscription method
+message SubscriptionResponse{}
+
+// Request is the webhook request id
+message Request {
+	string id = 1;
+	string idempotency_key = 2;
+}
+
+// CustomerData is the CustomerRequest webhook payload
+message CustomerData {
+	// Object contains the actual data
+	message Object {
+		string id = 1;
+		string object = 2;
+		float balance = 3;
+		int64 created = 4;
+		bool delinquent = 5;
+		string description = 6;
+		string email = 7;
+		bool livemode = 8;
+		string name = 9;
+	}
+	Object object = 1;
+}
+
+// CustomerData is the SubscriptionRequest webhook payload
+message SubscriptionData {
+	// Object contains the actual data
+	message Object {
+		// Metadata is used to provide custom metadata we have 
+		// previously set on the subscription 
+		message Metadata {
+			string tenant = 1;
+		}
+		string id = 1;
+		string object = 2;
+		string customer = 3;
+		Metadata metadata = 4;
+		string status = 5;
+		int64 start_date = 6;
+		int64 canceled_at = 7;
+		int64 ended_at = 8;
+		int64 trial_start = 9;
+		int64 trial_end = 10;
+	}
+	Object object = 1;
+}
+
+// message SubscriptionData {
+// 	message Object {
+// 		message List {
+// 			message Item {
+// 				message Plan {
+// 					string id = 1;
+// 					string object = 2;
+// 					bool active = 3;
+// 					float amount = 4;
+// 					string product = 5;
+// 				}
+// 				message Price {
+// 					string id = 1;
+// 					string object = 2;
+// 					bool active = 3;
+// 					string lookup_key = 4;
+// 				}
+// 				string id = 1;
+// 				string object = 2;
+// 				int64 created = 3;
+// 				Plan plan = 4;
+//              Price price = 5;
+// 			}
+// 			string object = 1;
+// 			repeated Item data = 2;
+// 		}
+// 		string id = 1;
+// 		string object = 2;
+// 		string customer = 3;
+// 		int64 days_until_due = 4;
+// 		int64 canceled_at = 5;
+// 		int64 ended_at = 6;
+// 		repeated List items = 7;
+// 		int64 start_date = 8;
+// 		string status = 9;
+// 		int64 trial_end = 10;
+// 		int64 trial_start = 11;
+// 	}
+
+// 	Object object = 1;
+// }

@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package customer.v1;
+
+import "google/api/annotations.proto";
+// import "validate/validate.proto";
+
+// CustomerService contains rpc methods used for entities
+// and related parties .
+service CustomerService {
+  // Create creates an customer for the specified tenant
+  rpc Create(CreateRequest) returns (CreateResponse);
+  // Query supports querying for customers using criteria in the
+  // QueryRequest. The methods returns a paged list of entities.
+  rpc Query(QueryRequest) returns (QueryResponse) {
+    // query string params are mapped to QueryRequest object
+    option (google.api.http) = {
+      get : "/customers/v1"
+    };
+  };
+  // Get retrieves the customer specified in the GetRequest.
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      get : "/customers/v1/{customer_id}"
+    };
+  };
+  // Update updates an customer.
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  // SetRisk sets an customer's overall KYC risk.
+  rpc SetRisk(SetRiskRequest) returns (SetRiskResponse);
+  // Delete deletes the specified customer
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+
+  // AddKeyPerson adds a key person to the specified customer.
+  rpc AddKeyPerson(AddKeyPersonRequest) returns (AddKeyPersonResponse);
+  // RemoveKeyPerson removes a key person from the specified customer.
+  rpc RemoveKeyPerson(RemoveKeyPersonRequest) returns (RemoveKeyPersonResponse);
+}
+
+// CreateRequest contains information needed to create a new customer.
+message CreateRequest { Customer customer = 1; }
+// CreateResponse returns the newly created customer for the Create method.
+message CreateResponse { Customer customer = 1; }
+
+// QueryRequest represents an customer query with options to filter by
+// free text, and other attributes. Offset and limit are used for
+// response pagination.
+message QueryRequest {
+  int64 offset = 1;
+  int64 limit = 2;
+  string search_text = 3;
+  string source_ref = 4;
+  oneof risk {
+    int32 null = 5;
+    Risk value = 6;
+  }
+}
+// QueryResponse returns a paged list of entities matchin QueryRequest criteria.
+// Matches provides the total number of records matching the query regardless of
+// limit.
+message QueryResponse {
+  repeated Customer cursor = 1;
+  int64 matches = 2;
+}
+
+// GetRequest is used to specify the customer to retrieve. Degrees can be
+// set to return related entites.
+message GetRequest { string customer_id = 1; }
+// GetResponse returns an individual customer based on the customer id
+// provided inthe GetRequest.
+message GetResponse { Customer customer = 1; }
+
+// UpdateRequest is used when calling the Update method. It contains the
+// complete customer to update.
+message UpdateRequest { Customer customer = 1; }
+// UpdateResponse returns the customer updated by the Update method.
+message UpdateResponse { Customer customer = 1; }
+
+// SetRiskRequest is used to specify the risk level when using the SetRisk
+// method to record a customer's (customer_id) overall risk.
+message SetRiskRequest {
+  string customer_id = 1;
+  Risk risk = 2;
+}
+// SetRiskResponse is returned by the SetRisk method. It is empty so can be
+// safely ignored.
+message SetRiskResponse {}
+
+// DeleteRequest contains arguments need by the Delete method. Specifically, the
+// customer_id for the customer to delete.
+message DeleteRequest { string customer_id = 1; }
+// DeleteResponse is returned by the Delete method. It is empty so can be safely
+// ignored.
+message DeleteResponse {}
+
+// AddKeyPersonRequest contains arguments need by the Delete method.
+// Specifically, the customer_id for the customer to delete.
+message AddKeyPersonRequest {
+  string customer_id = 1;
+  KeyPerson key_person = 2;
+}
+// AddKeyPersonResponse retiurns the key person added. It is empty so can be
+// safely ignored.
+message AddKeyPersonResponse { KeyPerson key_person = 1; }
+
+// RemoveKeyPersonRequest contains arguments need by the Delete method.
+// Specifically, the customer_id for the customer to delete.
+message RemoveKeyPersonRequest { string key_person_id = 1; }
+// RemoveKeyPersonResponse is returned by the Delete method. It is empty so can
+// be safely ignored.
+message RemoveKeyPersonResponse {}
+
+// Risk is the list of values that can be used when setting a person's overall
+// level of risk.
+enum Risk {
+  RISK_UNSPECIFIED = 0;
+  RISK_LOW = 1;
+  RISK_MODERATE = 2;
+  RISK_HIGH = 3;
+}
+
+// Customer represents information specific to customers within the
+// system (as opposed to people or organisitons)
+message Customer {
+  string id = 1;
+  string name = 2;
+  string nature = 3;
+  string purpose = 4;
+  repeated KeyPerson key_people = 5;
+  // string organisation_id = 5;
+  Risk risk = 6;
+  bool certified = 7;
+}
+
+// KeyPerson is a key person for a customer — someone who has finacial authority
+// or is in control.
+message KeyPerson {
+  string id = 1;
+  string given_names = 2;
+  string family_name = 3;
+  string identity_id = 4;
+  // Customer customer = 5;
+  // Capacity lists values to use when choosing a key person's
+  // capacity to act for the customer
+  enum Capacity {
+    CAPACITY_UNSPECIFIED = 0;
+    CAPACITY_CONTROL = 1;
+    CAPACITY_AGENT = 2;
+  }
+  Capacity capacity = 6;
+  Risk risk = 7;
+  bool certified = 8;
+}

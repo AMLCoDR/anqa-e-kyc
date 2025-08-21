@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+package subscription.v1;
+
+// import "validate/validate.proto";
+
+// SubscriptionService contains rpc methods used for managing an organisation's subscriptions.
+service SubscriptionService {
+	// Create creates a subscription for the tenant.
+	rpc Create(CreateRequest) returns (CreateResponse);
+	// Get returns the tenant's subscription 
+	rpc Get(GetRequest) returns (GetResponse);
+	// AccessPortal provides a "magic link" that can be used to access the Stripe client portal. 
+	rpc AccessPortal(AccessPortalRequest) returns (AccessPortalResponse);
+	// Delete deletes the tenant's subscription
+	rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+// PlanType represents available plans
+enum PlanType {
+	PLAN_TYPE_UNSPECIFIED = 0;
+	PLAN_TYPE_STARTER = 1;
+	PLAN_TYPE_PROFESSIONAL = 2;
+	PLAN_TYPE_PREMIUM = 3;
+}
+
+// Status represents subscription's status 
+enum Status {
+	STATUS_UNSPECIFIED = 0;
+	STATUS_TRIAL = 1;
+	STATUS_ACTIVE = 2;
+	STATUS_INACTIVE = 3;
+}
+
+// Subscription provides details of the user's/tenant's current subscription — its plan and status. 
+message Subscription {
+	string stripe_cust_id = 1;
+	string stripe_subn_id = 2;
+	Status status = 3;
+	// Plan describes the current plan a user/tenant is subscribed to
+	message Plan {
+		PlanType type = 1;
+		// Quota provides details on the user's quota limits 
+		message Quota {
+			int32 id_checks = 1;
+			int32 transactions = 2;
+		}
+		Quota quota = 2;
+	}
+	Plan plan = 4;
+}
+
+// CreateRequest is required by the Create method when creating a subscription
+message CreateRequest {
+	string account_name = 1;
+	string account_email = 2;
+	PlanType plan_type = 3;
+}
+// CreateResponse is returned by the Create method. Clients receive an empty response if successful
+// and an error if unsuccessful.  
+message CreateResponse {}
+
+// GetRequest is required by the Get method. As subscriptions are keyed by tenant id,
+// no details are required.
+message GetRequest {}
+// GetSubscriptionResponse returns the status of the tenant's subscription.
+message GetResponse {
+	Subscription subscription = 1;
+}
+
+// AccessPortalRequest is used when calling the AccessPortal method to request access to 
+// the Stripe client portal. The return_path is where the user will be redirected to on logout.
+message AccessPortalRequest {
+	string return_path = 1;
+}
+// AccessPortalResponse provides a temporary "magic link" to the Stripe client portal.
+// The link contains credentials to automatically log the user in to the portal.
+message AccessPortalResponse {
+	string url = 1;
+}
+
+// DeleteRequest is required by the Delete method. It is empty as the subscription
+// is deleted using the tenant's id (injected into the call's context).  
+message DeleteRequest {}
+// DeleteResponse is returned from the Delete method. It is empty as failure or successful
+// are determined by the presence or absence of an error. 
+message DeleteResponse {}

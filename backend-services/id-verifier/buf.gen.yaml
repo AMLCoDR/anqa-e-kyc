@@ -1,0 +1,23 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: github.com/anqaml/id-verifier/gen/proto/go
+    override:
+      buf.build/envoyproxy/protoc-gen-validate: go.buf.build/library/go/envoyproxy/protoc-gen-validate
+    except:
+      - buf.build/googleapis/googleapis
+plugins:
+  - name: go
+    out: gen/proto/go
+    opt: paths=source_relative
+  - name: go-grpc
+    out: gen/proto/go
+    opt: paths=source_relative
+  - name: grpc-gateway
+    out: gen/proto/go
+    opt:
+      - paths=source_relative
+      - generate_unbound_methods=true
+  - name: openapiv2
+    out: gen/proto/openapi

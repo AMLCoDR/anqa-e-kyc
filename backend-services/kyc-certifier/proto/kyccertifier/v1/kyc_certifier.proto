@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package kyccertifier.v1;
+
+// import "google/protobuf/any.proto";
+import "google/api/annotations.proto";
+import "vcissuer/v1/vc_issuer.proto";
+// import "validate/validate.proto";
+
+// KycCertifierService contains rpc methods used during the certification
+// process.
+service KycCertifierService {
+  // NewPerson the KYC certification process
+  rpc NewPerson(NewPersonRequest) returns (NewPersonResponse);
+
+  // Verify an id document
+  rpc VerifyId(VerifyIdRequest) returns (VerifyIdResponse) {
+    option (google.api.http) = {
+      post : "/kyc-certifier/v1/verifyid"
+    };
+  };
+}
+
+// Arguments required for the NewPerson method.
+message NewPersonRequest {
+  string given_names = 1;
+  string family_name = 2;
+  bool consented = 3;
+  bool shareable = 4;
+  bool own_behalf = 5;
+  oneof customer {
+    bool create = 6;
+    string customer_id = 7;
+  }
+}
+// Response returned by the NewPerson method. The response references a newly
+// created identity that can be used in subsequent verification steps.
+message NewPersonResponse { string identity_id = 1; }
+
+// VerifyIdRequest contains information required to verify an individual's
+// identity
+message VerifyIdRequest {
+  string identity_id = 1;
+  oneof id {
+    vcissuer.v1.Address address = 2;
+    vcissuer.v1.Licence licence = 3;
+    vcissuer.v1.NationalId national_id = 4;
+    vcissuer.v1.Passport passport = 5;
+    vcissuer.v1.Exemption exemption = 6;
+  }
+}
+
+// VerifyIdResponse returns the newly created person for the Initiate
+// method.
+message VerifyIdResponse {
+  bool verified = 1;
+  string message = 2;
+}
+
+// // Dynamic requests
+// https://blog.envoyproxy.io/dynamic-extensibility-and-protocol-buffers-dcd0bf0b8801
+// message Request {
+//   // The name of the claim. The name must match a supported claim.
+//   string name = 1;
+//   // Claim-specific configuration dependent on the claim being
+//   // used. See the supported claims documentation.
+//   google.protobuf.Any body = 2;
+// }
+
+// // A typed struct used for specific claim
+// message Body {
+//   // A URL that uniquely identifies the type of the protocol message.
+//   // Has the same semantics as google.protobuf.Any:
+//   https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/any.proto
+//   string type_url = 1;
+//   // JSON representation of the data.
+//   google.protobuf.Struct value = 2;
+// }

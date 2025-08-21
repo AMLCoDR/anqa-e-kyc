@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eKYC Platform - Interactive Demo</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" href="/anqa-logo.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f9fafb;
+            min-height: 100vh;
+            color: #111827;
+        }
+        
+        /* Smartphone Frame */
+        .phone-frame {
+            width: 375px;
+            height: 700px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #f9fafb;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Status Bar */
+        .status-bar {
+            height: 44px;
+            background: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .status-right {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            color: #1565C0;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1rem;
+            color: #6b7280;
+            margin: 0;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+            height: calc(100vh - 200px);
+        }
+        
+        .sidebar {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .main-content {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            overflow-y: auto;
+        }
+        
+        .demo-step {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .demo-step:hover {
+            border-color: #1565C0;
+            background: #f0f9ff;
+        }
+        
+        .demo-step.active {
+            border-color: #1565C0;
+            background: #1565C0;
+            color: white;
+        }
+        
+        .demo-step.completed {
+            border-color: #10b981;
+            background: #ecfdf5;
+            color: #065f46;
+        }
+        
+        .step-content {
+            display: none;
+        }
+        
+        .step-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #1565C0;
+            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+        }
+        
+        textarea.form-control {
+            font-family: inherit;
+            line-height: 1.5;
+        }
+        
+        .btn {
+            background: #1565C0;
+            color: white;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px auto;
+            font-weight: 500;
+            width: 100%;
+            max-width: 200px;
+            display: block;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            background: #1E88E5;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #1565C0;
+            transition: width 0.5s ease;
+        }
+        
+        .demo-preview {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-success { background: #28a745; }
+        .status-warning { background: #ffc107; }
+        .status-error { background: #dc3545; }
+        .status-info { background: #17a2b8; }
+        
+        .hidden { display: none; }
+        
+        .file-upload {
+            border: 2px dashed #1565C0;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-upload:hover {
+            background: #f0f9ff;
+            border-color: #1E88E5;
+        }
+        
+        .verification-result {
+            background: #e8f5e8;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .risk-score {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .risk-low { background: #d4edda; color: #155724; }
+        .risk-medium { background: #fff3cd; color: #856404; }
+        .risk-high { background: #f8d7da; color: #721c24; }
+        
+        .camera-container {
+            margin-top: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .camera-container video {
+            border: 2px solid #1565C0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .camera-container .btn {
+            margin: 5px;
+        }
+        
+        .document-preview-placeholder {
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        .document-preview-placeholder img {
+            max-width: 100%;
+            max-height: 120px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .document-preview-placeholder.has-image {
+            border-color: #1565C0;
+            background: #f0f9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="header">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <img src="/anqa-logo.png" alt="Anqa Logo" style="height: 60px; margin-right: 20px;">
+                <div>
+                    <h1 style="margin: 0; color: #1565C0;">eKYC Platform</h1>
+                    <p style="margin: 5px 0 0 0; color: #6b7280; font-size: 1rem;">Interactive Demo</p>
+                </div>
+            </div>
+            <p>Experience the future of customer onboarding and compliance verification in Kenya</p>
+        </div>
+        
+        <div class="demo-grid">
+            <div class="sidebar">
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <img src="/anqa-logo.png" alt="Anqa" style="height: 32px; margin-right: 10px;">
+                    <h3 style="margin: 0; color: #1565C0;">Demo Steps</h3>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                </div>
+                
+                <div class="demo-step active" data-step="0">
+                    <strong>0. Consent</strong>
+                    <br><small>Privacy & authorization</small>
+                </div>
+                
+                <div class="demo-step" data-step="1">
+                    <strong>1. Customer Registration</strong>
+                    <br><small>Start the onboarding process</small>
+                </div>
+                
+                <div class="demo-step" data-step="2">
+                    <strong>2. Document Upload</strong>
+                    <br><small>Verify identity documents</small>
+                </div>
+                
+                <div class="demo-step" data-step="3">
+                    <strong>3. Identity Verification</strong>
+                    <br><small>Multi-factor authentication</small>
+                </div>
+                
+                <div class="demo-step" data-step="4">
+                    <strong>4. Account Purpose</strong>
+                    <br><small>Purpose declaration & compliance</small>
+                </div>
+                
+                <div class="demo-step" data-step="5">
+                    <strong>5. Final Approval</strong>
+                    <br><small>Complete onboarding</small>
+                </div>
+                
+                <div class="demo-step" data-step="6">
+                    <strong>6. Completion</strong>
+                    <br><small>Thank you message</small>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <!-- Phone Frame for App Content -->
+                <div class="phone-frame">
+                    <div class="phone-screen">
+                        <!-- Status Bar -->
+                        <div class="status-bar">
+                            <div class="status-left">
+                                <span>9:41</span>
+                            </div>
+                            <div class="status-right">
+                                <span>📶</span>
+                                <span>📶</span>
+                                <span>🔋</span>
+                            </div>
+                        </div>
+                        
+                                                <!-- App Content Container -->
+                        <div style="padding: 20px; height: calc(100% - 44px); overflow-y: auto;">
+                            <!-- Page 0: Consent -->
+                            <div class="step-content active" id="step0">
+                                <h2>📋 Consent & Authorization</h2>
+                                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; max-height: 400px; overflow-y: auto;">
+                                    <p style="line-height: 1.6; margin-bottom: 15px;">
+                                        I confirm that I am authorised to provide the personal details presented and I consent to my information being processed in Singapore and checked with the document issuer, official record holder, a credit bureau and authorised third parties for the purpose of verifying my identity and address.
+                                    </p>
+                                    <p style="line-height: 1.6; margin-bottom: 15px;">
+                                        Further information on privacy, security and data processing can be found at 
+                                        <a href="https://www.anqacompliance.com/privacy-policy" target="_blank" style="color: #1565C0; text-decoration: none;">https://www.anqacompliance.com/privacy-policy</a>
+                                    </p>
+                                </div>
+                                
+                                <div style="text-align: center; margin-top: 30px;">
+                                    <button class="btn" onclick="nextStep()">I Consent & Continue</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 1: Customer Registration -->
+                            <div class="step-content" id="step1">
+                    <h2>👤 Customer Registration</h2>
+                    
+                    <form id="registrationForm">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="Enter full name" value="Alex Castro" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email address" value="alex.castro@gmail.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter phone number" value="+254 700 123 456" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Date of Birth *</label>
+                            <input type="date" class="form-control" id="dob" value="1993-03-03" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Country of Residence *</label>
+                            <select class="form-control" id="country" required>
+                                <option value="">Select country</option>
+                                <option value="KE" selected>Kenya</option>
+                                <option value="US">United States</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="CA">Canada</option>
+                                <option value="AU">Australia</option>
+                                <option value="DE">Germany</option>
+                                <option value="FR">France</option>
+                                <option value="JP">Japan</option>
+                                <option value="SG">Singapore</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Purpose of Relationship</label>
+                            <select class="form-control" id="customerType">
+                                <option value="individual">Personal Banking</option>
+                                <option value="business">Business Banking</option>
+                                <option value="corporate">Corporate Banking</option>
+                                <option value="investment">Investment Services</option>
+                                <option value="insurance">Insurance Products</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn">Continue to Document Upload</button>
+                    </form>
+                </div>
+                
+                <!-- Step 2: Document Upload -->
+                <div class="step-content" id="step2">
+                    <h2>📄 Document Upload & Verification</h2>
+                    
+                    <div class="demo-preview">
+                        <h4>Required Documents</h4>
+                        <ul>
+                            <li>Government-issued photo ID (Passport, Driver's License, or National ID)</li>
+                            <li>Proof of address (Utility bill, Bank statement, or Government letter)</li>
+                            <li>Additional verification documents (if required)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Government ID Document</label>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <div class="file-upload" onclick="document.getElementById('idDocument').click()" style="flex: 1;">
+                                <input type="file" id="idDocument" class="hidden" accept="image/*,.pdf">
+                                <div>📷 Click to upload ID document</div>
+                                <div><small>Supports: JPG, PNG, PDF (Max: 10MB)</small></div>
+                            </div>
+                            <button type="button" class="btn btn-secondary" onclick="openCamera('idCamera')" style="min-width: 120px;">
+                                📸 Take Photo
+                            </button>
+                        </div>
+                        <div id="idCamera" class="camera-container hidden">
+                            <video id="idVideo" autoplay playsinline style="width: 100%; max-width: 400px; border-radius: 8px;"></video>
+                            <canvas id="idCanvas" class="hidden" style="width: 100%; max-width: 400px; border-radius: 8px;"></canvas>
+                            <div style="margin-top: 10px; display: flex; gap: 10px; justify-content: center;">
+                                <button type="button" class="btn btn-success" onclick="capturePhoto('id')">📸 Capture</button>
+                                <button type="button" class="btn btn-secondary" onclick="closeCamera('idCamera')">❌ Close</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Proof of Address</label>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <div class="file-upload" onclick="document.getElementById('addressDocument').click()" style="flex: 1;">
+                                <input type="file" id="addressDocument" class="hidden" accept="image/*,.pdf">
+                                <div>🏠 Click to upload address proof</div>
+                                <div><small>Supports: JPG, PNG, PDF (Max: 10MB)</small></div>
+                            </div>
+                            <button type="button" class="btn btn-secondary" onclick="openCamera('addressCamera')" style="min-width: 120px;">
+                                📸 Take Photo
+                            </button>
+                        </div>
+                        <div id="addressCamera" class="camera-container hidden">
+                            <video id="addressVideo" autoplay playsinline style="width: 100%; max-width: 400px; border-radius: 8px;"></video>
+                            <canvas id="addressCanvas" class="hidden"></canvas>
+                            <div style="margin-top: 10px; display: flex: gap: 10px; justify-content: center;">
+                                <button type="button" class="btn btn-success" onclick="capturePhoto('address')">📸 Capture</button>
+                                <button type="button" class="btn btn-secondary" onclick="closeCamera('addressCamera')">❌ Close</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="verification-result hidden" id="verificationResult">
+                        <h4>✅ Document Verification Results</h4>
+                        <p><strong>ID Document:</strong> <span class="status-success">✓ Verified</span></p>
+                        <p><strong>Address Proof:</strong> <span class="status-success">✓ Verified</span></p>
+                        <p><strong>Fraud Detection:</strong> <span class="status-success">✓ No issues detected</span></p>
+                    </div>
+                    
+                    <!-- Document Preview Area -->
+                    <div class="demo-preview" id="documentPreview" style="display: none;">
+                        <h4>📸 Captured Documents</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <h5>ID Document</h5>
+                                <div id="idPreview" class="document-preview-placeholder">
+                                    <div style="text-align: center; padding: 20px; color: #6c757d;">
+                                        📷 No ID document captured yet
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Address Proof</h5>
+                                <div id="addressPreview" class="document-preview-placeholder">
+                                    <div style="text-align: center; padding: 20px; color: #6c757d;">
+                                        🏠 No address document captured yet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="simulateDocumentVerification()">Verify Documents</button>
+                    <button class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                    <button class="btn btn-success" onclick="nextStep()">Continue to Identity Verification</button>
+                </div>
+                
+                <!-- Step 3: Identity Verification -->
+                <div class="step-content" id="step3">
+                    <h2>🔐 Identity Verification</h2>
+                    <p>Complete multi-factor authentication and biometric verification.</p>
+                    
+                    <div class="demo-preview">
+                        <h4>Verification Methods</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0;">
+                            <div style="text-align: center; padding: 15px; background: #e8f5e8; border-radius: 8px;">
+                                <div style="font-size: 2rem;">📱</div>
+                                <strong>SMS Verification</strong>
+                                <div><small>Code sent to your phone</small></div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: #e8f5e8; border-radius: 8px;">
+                                <div style="font-size: 2rem;">📧</div>
+                                <strong>Email Verification</strong>
+                                <div><small>Code sent to your email</small></div>
+                            </div>
+                            <div style="text-align: center; padding: 15px; background: #e8f5e8; border-radius: 8px;">
+                                <div style="font-size: 2rem;">👁️</div>
+                                <strong>Biometric Scan</strong>
+                                <div><small>Face recognition</small></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>SMS Verification Code</label>
+                        <input type="text" class="form-control" id="smsCode" placeholder="Enter 6-digit code" maxlength="6">
+                        <small>Code sent to: <span id="phoneDisplay">+1 (555) 123-4567</span></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email Verification Code</label>
+                        <input type="text" class="form-control" id="emailCode" placeholder="Enter 6-digit code" maxlength="6">
+                        <small>Code sent to: <span id="emailDisplay">demo@example.com</span></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Biometric Verification</label>
+                        <button class="btn btn-warning" onclick="simulateBiometricVerification()">Start Face Scan</button>
+                        <div id="biometricStatus" class="hidden">
+                            <span class="status-success">✓ Biometric verification completed</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                    <button class="btn btn-success" onclick="nextStep()">Continue to Final Approval</button>
+                </div>
+                
+                <!-- Step 4: Account Purpose Declaration -->
+                <div class="step-content" id="step4">
+                    <h2>📋 Account Purpose Declaration</h2>
+                    
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #1565C0;">
+                        <p style="line-height: 1.6; margin-bottom: 0; color: #495057; font-size: 0.95rem;">
+                            <strong>Federal Law Requirement:</strong> We're required by federal law to ask for the purpose of your account. This is a standard security measure that helps us understand how you plan to use our services, so we can better protect your account from fraud and unauthorized activity.
+                        </p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="accountPurpose"><strong>Primary Account Purpose *</strong></label>
+                        <textarea 
+                            class="form-control" 
+                            id="accountPurpose" 
+                            rows="4" 
+                            placeholder="Please describe the primary purpose of your account and how you plan to use our services..."
+                            style="resize: vertical; min-height: 100px;"
+                            required
+                        ></textarea>
+                        <small class="form-text text-muted">
+                            Please provide a detailed description of your intended use of the account.
+                        </small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="expectedVolume"><strong>Expected Monthly Transaction Volume</strong></label>
+                        <select class="form-control" id="expectedVolume">
+                            <option value="">Select volume range</option>
+                            <option value="low">Under $1,000</option>
+                            <option value="medium">$1,000 - $10,000</option>
+                            <option value="high">$10,000 - $50,000</option>
+                            <option value="very-high">Over $50,000</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sourceOfFunds"><strong>Primary Source of Funds</strong></label>
+                        <select class="form-control" id="sourceOfFunds">
+                            <option value="">Select source</option>
+                            <option value="employment">Employment/Salary</option>
+                            <option value="business">Business Income</option>
+                            <option value="investment">Investment Returns</option>
+                            <option value="inheritance">Inheritance</option>
+                            <option value="other">Other (please specify)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="otherSourceGroup" style="display: none;">
+                        <label for="otherSource"><strong>Please Specify Other Source</strong></label>
+                        <input type="text" class="form-control" id="otherSource" placeholder="Describe your source of funds">
+                    </div>
+                    
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2196F3;">
+                        <p style="margin: 0; font-size: 0.9rem; color: #1976d2;">
+                            <strong>Note:</strong> This information helps us provide you with the most appropriate services and ensure compliance with regulatory requirements. All information is kept confidential and secure.
+                        </p>
+                    </div>
+                    
+                    <button class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                    <button class="btn btn-success" onclick="nextStep()">Continue to Final Approval</button>
+                </div>
+                
+                <!-- Step 5: Final Approval -->
+                <div class="step-content" id="step5">
+                    <h2>✅ Final Approval & Onboarding</h2>
+                    <p>Complete the onboarding process and activate the customer account.</p>
+                    
+                    <div class="demo-preview">
+                        <h4>Onboarding Summary</h4>
+                        <div style="background: #e8f5e8; padding: 20px; border-radius: 8px; margin: 15px 0;">
+                            <h5>Customer Information</h5>
+                            <p><strong>Name:</strong> <span id="summaryName">John Doe</span></p>
+                            <p><strong>Email:</strong> <span id="summaryEmail">john@example.com</span></p>
+                            <p><strong>Phone:</strong> <span id="summaryPhone">+1 (555) 123-4567</span></p>
+                            <p><strong>Risk Score:</strong> <span class="status-success">Low (15/100)</span></p>
+                            <p><strong>Verification Status:</strong> <span class="status-success">All checks passed</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Account Type</label>
+                        <select class="form-control" id="accountType">
+                            <option value="basic">Basic Account</option>
+                            <option value="premium">Premium Account</option>
+                            <option value="business">Business Account</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Initial Deposit Amount</label>
+                        <input type="number" class="form-control" id="initialDeposit" placeholder="Enter amount" min="0" step="0.01">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Terms & Conditions</label>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; max-height: 150px; overflow-y: auto;">
+                            <p>By proceeding, you agree to our terms and conditions, privacy policy, and acknowledge that all information provided is accurate and complete. You consent to identity verification and compliance checks as required by applicable regulations.</p>
+                        </div>
+                        <label style="margin-top: 10px;">
+                            <input type="checkbox" id="termsAccepted" required> I accept the terms and conditions
+                        </label>
+                    </div>
+                    
+                    <button class="btn btn-success" onclick="completeOnboarding()">Complete Onboarding</button>
+                    <button class="btn btn-secondary" onclick="previousStep()">Previous</button>
+                </div>
+                
+                <!-- Step 6: Thank You & Completion -->
+                <div class="step-content" id="step6">
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <!-- Green Tick Icon -->
+                        <div style="font-size: 6rem; color: #10b981; margin-bottom: 30px;">
+                            ✅
+                        </div>
+                        
+                        <!-- Success Message -->
+                        <h2 style="color: #10b981; margin-bottom: 20px; font-size: 2rem;">
+                            Onboarding Complete!
+                        </h2>
+                        
+                        <p style="color: #6b7280; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; max-width: 400px; margin-left: auto; margin-right: auto;">
+                            Thank you for completing your eKYC verification. Your account has been successfully created and is now ready for use.
+                        </p>
+                        
+                        <!-- Account Details Summary -->
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 350px; text-align: left;">
+                            <h4 style="margin: 0 0 15px 0; color: #374151;">Account Summary</h4>
+                            <div style="margin-bottom: 8px;">
+                                <strong>Name:</strong> <span id="finalName">Alex Castro</span>
+                            </div>
+                            <div style="margin-bottom: 8px;">
+                                <strong>Status:</strong> <span style="color: #10b981;">✓ Verified</span>
+                            </div>
+                            <div style="margin-bottom: 8px;">
+                                <strong>Account Type:</strong> <span id="finalAccountType">Personal Banking</span>
+                            </div>
+                            <div style="margin-bottom: 0;">
+                                <strong>Created:</strong> <span id="finalDate">Today</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Next Steps -->
+                        <div style="margin-top: 30px;">
+                            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 20px;">
+                                You will receive a confirmation email with your account details shortly.
+                            </p>
+                            
+                            <button class="btn" onclick="restartDemo()" style="background: #10b981;">
+                                Start New Onboarding
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let customerData = {};
+        
+        // Initialize demo
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            setupEventListeners();
+            initializeDemoData();
+        });
+        
+        function setupEventListeners() {
+            // Sidebar step navigation
+            document.querySelectorAll('.demo-step').forEach(step => {
+                step.addEventListener('click', function() {
+                    const stepNumber = parseInt(this.dataset.step);
+                    if (stepNumber <= getHighestCompletedStep()) {
+                        goToStep(stepNumber);
+                    }
+                });
+            });
+            
+            // Registration form submission
+            document.getElementById('registrationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                saveCustomerData();
+                nextStep();
+            });
+            
+            // File upload event listeners
+            document.getElementById('idDocument').addEventListener('change', function(e) {
+                handleFileUpload(e, 'id');
+            });
+            
+            document.getElementById('addressDocument').addEventListener('change', function(e) {
+                handleFileUpload(e, 'address');
+            });
+        }
+        
+        function saveCustomerData() {
+            customerData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                dob: document.getElementById('dob').value,
+                country: document.getElementById('country').value,
+                customerType: document.getElementById('customerType').value
+            };
+            
+            // Update display fields
+            document.getElementById('phoneDisplay').textContent = customerData.phone;
+            document.getElementById('emailDisplay').textContent = customerData.email;
+            document.getElementById('summaryName').textContent = customerData.fullName;
+            document.getElementById('summaryEmail').textContent = customerData.email;
+            document.getElementById('summaryPhone').textContent = customerData.phone;
+        }
+        
+        // Initialize with Alex Castro's data
+        function initializeDemoData() {
+            document.getElementById('phoneDisplay').textContent = '+254 700 123 456';
+            document.getElementById('emailDisplay').textContent = 'alex.castro@gmail.com';
+            document.getElementById('summaryName').textContent = 'Alex Castro';
+            document.getElementById('summaryEmail').textContent = 'alex.castro@gmail.com';
+            document.getElementById('summaryPhone').textContent = '+254 700 123 456';
+        }
+        
+        function goToStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show target step
+            document.getElementById(`step${stepNumber}`).classList.add('active');
+            
+            // Update sidebar
+            document.querySelectorAll('.demo-step').forEach(step => {
+                step.classList.remove('active');
+                if (parseInt(step.dataset.step) === stepNumber) {
+                    step.classList.add('active');
+                }
+            });
+            
+            currentStep = stepNumber;
+            updateProgress();
+        }
+        
+        function nextStep() {
+            if (currentStep < 6) {
+                goToStep(currentStep + 1);
+            }
+        }
+        
+        function previousStep() {
+            if (currentStep > 0) {
+                goToStep(currentStep - 1);
+            }
+        }
+        
+        function updateProgress() {
+            const progress = (currentStep / 7) * 100; // 7 steps now (0-6)
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Mark completed steps
+            document.querySelectorAll('.demo-step').forEach(step => {
+                const stepNumber = parseInt(step.dataset.step);
+                if (stepNumber < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                }
+            });
+        }
+        
+        function getHighestCompletedStep() {
+            return Math.max(currentStep, 0);
+        }
+        
+        function simulateDocumentVerification() {
+            document.getElementById('verificationResult').classList.remove('hidden');
+            setTimeout(() => {
+                alert('✅ Documents verified successfully! AI analysis completed in 2.3 seconds.');
+            }, 500);
+        }
+        
+        function simulateBiometricVerification() {
+            const status = document.getElementById('biometricStatus');
+            status.classList.remove('hidden');
+            status.innerHTML = '<span class="status-info">🔍 Scanning face...</span>';
+            
+            setTimeout(() => {
+                status.innerHTML = '<span class="status-success">✅ Biometric verification completed</span>';
+            }, 2000);
+        }
+        
+        function runComplianceChecks() {
+            const results = document.getElementById('complianceResults');
+            results.classList.remove('hidden');
+            
+            setTimeout(() => {
+                alert('✅ Compliance checks completed! All verifications passed.');
+            }, 500);
+        }
+        
+        function completeOnboarding() {
+            if (!document.getElementById('termsAccepted').checked) {
+                alert('Please accept the terms and conditions to continue.');
+                return;
+            }
+            
+            // Update final page with user data
+            const accountType = document.getElementById('accountType').value;
+            const accountTypeText = document.getElementById('accountType').options[document.getElementById('accountType').selectedIndex].text;
+            
+            document.getElementById('finalName').textContent = customerData.fullName || 'Alex Castro';
+            document.getElementById('finalAccountType').textContent = accountTypeText || 'Personal Banking';
+            document.getElementById('finalDate').textContent = new Date().toLocaleDateString();
+            
+            nextStep();
+        }
+        
+        function restartDemo() {
+            currentStep = 0;
+            customerData = {};
+            
+            goToStep(0);
+            
+            // Reset forms
+            document.getElementById('registrationForm').reset();
+            document.getElementById('verificationResult').classList.add('hidden');
+            document.getElementById('complianceResults').classList.add('hidden');
+            document.getElementById('biometricStatus').classList.add('hidden');
+            
+            // Reset file inputs
+            document.getElementById('idDocument').value = '';
+            document.getElementById('addressDocument').value = '';
+        }
+
+        // Handle source of funds selection
+        function handleSourceOfFundsChange() {
+            const sourceSelect = document.getElementById('sourceOfFunds');
+            const otherSourceGroup = document.getElementById('otherSourceGroup');
+            
+            if (sourceSelect.value === 'other') {
+                otherSourceGroup.style.display = 'block';
+                document.getElementById('otherSource').required = true;
+            } else {
+                otherSourceGroup.style.display = 'none';
+                document.getElementById('otherSource').required = false;
+                document.getElementById('otherSource').value = '';
+            }
+        }
+
+        // Initialize event listeners when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listener for source of funds dropdown
+            const sourceSelect = document.getElementById('sourceOfFunds');
+            if (sourceSelect) {
+                sourceSelect.addEventListener('change', handleSourceOfFundsChange);
+            }
+        });
+        
+        // Camera functionality for document capture
+        let stream = null;
+        let currentCameraType = null;
+        
+        async function openCamera(cameraId) {
+            try {
+                // Close any existing camera
+                if (stream) {
+                    closeCamera();
+                }
+                
+                currentCameraType = cameraId;
+                const videoElement = document.getElementById(cameraId === 'idCamera' ? 'idVideo' : 'addressVideo');
+                
+                // Request camera access
+                stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: 'environment', // Use back camera if available
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    } 
+                });
+                
+                videoElement.srcObject = stream;
+                document.getElementById(cameraId).classList.remove('hidden');
+                
+                // Show success message
+                showMessage('📸 Camera opened successfully! Position your document clearly in the frame.', 'success');
+                
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+                showMessage('❌ Unable to access camera. Please check permissions or try uploading a file instead.', 'error');
+            }
+        }
+        
+        function closeCamera(cameraId) {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+            }
+            document.getElementById(cameraId).classList.add('hidden');
+            currentCameraType = null;
+            showMessage('📷 Camera closed', 'info');
+        }
+        
+        function capturePhoto(type) {
+            if (!stream) {
+                showMessage('❌ No camera stream available', 'error');
+                return;
+            }
+            
+            const videoElement = document.getElementById(type === 'id' ? 'idVideo' : 'addressVideo');
+            const canvasElement = document.getElementById(type === 'id' ? 'idCanvas' : 'addressCanvas');
+            const fileInput = document.getElementById(type === 'id' ? 'idDocument' : 'addressDocument');
+            
+            // Set canvas dimensions to match video
+            canvasElement.width = videoElement.videoWidth;
+            canvasElement.height = videoElement.videoHeight;
+            
+            // Draw video frame to canvas
+            const ctx = canvasElement.getContext('2d');
+            ctx.drawImage(videoElement, 0, 0);
+            
+            // Convert canvas to blob
+            canvasElement.toBlob(function(blob) {
+                // Create a File object from the blob
+                const file = new File([blob], `${type}_document_${Date.now()}.jpg`, { type: 'image/jpeg' });
+                
+                // Create a FileList-like object
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                
+                // Set the file input value
+                fileInput.files = dataTransfer.files;
+                
+                // Show document preview
+                showDocumentPreview(type, canvasElement.toDataURL('image/jpeg'));
+                
+                // Show success message
+                showMessage(`✅ ${type === 'id' ? 'ID' : 'Address'} document captured successfully!`, 'success');
+                
+                // Close camera
+                closeCamera(type === 'id' ? 'idCamera' : 'addressCamera');
+                
+                // Simulate OCR processing
+                simulateOCRProcessing(type);
+                
+            }, 'image/jpeg', 0.9);
+        }
+        
+        function simulateOCRProcessing(type) {
+            const documentType = type === 'id' ? 'ID Document' : 'Address Proof';
+            showMessage(`🔍 Processing ${documentType} with OCR...`, 'info');
+            
+            // Update preview with loading state
+            const previewElement = document.getElementById(type === 'id' ? 'idPreview' : 'addressPreview');
+            const originalContent = previewElement.innerHTML;
+            previewElement.innerHTML = `
+                <div style="text-align: center; padding: 20px; color: #1565C0;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🔍</div>
+                    <div>Processing OCR...</div>
+                    <div style="font-size: 0.8rem; margin-top: 5px; color: #6c757d;">Extracting text data</div>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                // Restore original content and show success
+                previewElement.innerHTML = originalContent;
+                showMessage(`✅ ${documentType} OCR completed! Text extracted successfully.`, 'success');
+                
+                // Add OCR success indicator
+                previewElement.innerHTML += `
+                    <div style="position: absolute; top: 5px; right: 5px; background: #10b981; color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 12px;">✓</div>
+                `;
+                previewElement.style.position = 'relative';
+            }, 2000);
+        }
+        
+        function showDocumentPreview(type, imageDataUrl) {
+            // Show the preview area
+            document.getElementById('documentPreview').style.display = 'block';
+            
+            // Update the appropriate preview
+            const previewElement = document.getElementById(type === 'id' ? 'idPreview' : 'addressPreview');
+            previewElement.innerHTML = `<img src="${imageDataUrl}" alt="${type === 'id' ? 'ID' : 'Address'} Document" style="max-width: 100px; max-height: 120px; border-radius: 6px;">`;
+            previewElement.classList.add('has-image');
+            
+            // Show success message
+            showMessage(`📸 ${type === 'id' ? 'ID' : 'Address'} document preview updated!`, 'success');
+        }
+        
+        function handleFileUpload(event, type) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // Validate file type
+            if (!file.type.startsWith('image/') && file.type !== 'application/pdf') {
+                showMessage(`❌ Please select an image file (JPG, PNG) or PDF`, 'error');
+                return;
+            }
+            
+            // Validate file size (10MB max)
+            if (file.size > 10 * 1024 * 1024) {
+                showMessage(`❌ File size must be less than 10MB`, 'error');
+                return;
+            }
+            
+            // Show preview for image files
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    showDocumentPreview(type, e.target.result);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // For PDFs, show a PDF icon
+                showDocumentPreview(type, 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEwMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRkY2QjYwIiByeD0iNiIvPgo8dGV4dCB4PSI1MCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5QREY8L3RleHQ+Cjwvc3ZnPgo=');
+            }
+            
+            showMessage(`✅ ${type === 'id' ? 'ID' : 'Address'} document uploaded successfully!`, 'success');
+        }
+        
+        function showMessage(message, type = 'info') {
+            // Create or update message element
+            let messageElement = document.getElementById('cameraMessage');
+            if (!messageElement) {
+                messageElement = document.createElement('div');
+                messageElement.id = 'cameraMessage';
+                messageElement.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 15px 20px;
+                    border-radius: 8px;
+                    color: white;
+                    font-weight: 500;
+                    z-index: 1000;
+                    max-width: 300px;
+                    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                    transition: all 0.3s ease;
+                `;
+                document.body.appendChild(messageElement);
+            }
+            
+            // Set message content and style
+            messageElement.textContent = message;
+            messageElement.style.background = type === 'success' ? '#10b981' : 
+                                           type === 'error' ? '#ef4444' : 
+                                           type === 'warning' ? '#f59e0b' : '#3b82f6';
+            
+            // Show message
+            messageElement.style.opacity = '1';
+            messageElement.style.transform = 'translateX(0)';
+            
+            // Auto-hide after 4 seconds
+            setTimeout(() => {
+                messageElement.style.opacity = '0';
+                messageElement.style.transform = 'translateX(100%)';
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+syntax = "proto3";
+
+package customer.v1beta1;
+
+import "google/api/annotations.proto";
+// import "validate/validate.proto";
+
+// CustomerService contains rpc methods used for entities
+// and related parties .
+service CustomerService {
+  // Add adds an customer for the specified tenant
+  rpc Add(AddRequest) returns (AddResponse);
+  // Query supports querying for entities using criteria in the QueryRequest.
+  // The methods returns a paged list of entities.
+  rpc Query(QueryRequest) returns (QueryResponse) {
+    // query string params are mapped to QueryRequest object
+    option (google.api.http) = {
+      get : "/customers/v1beta1"
+    };
+  };
+  // Get retrieves the customer specified in the GetRequest.
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      get : "/customers/v1beta1/{customer_id}"
+    };
+  };
+  // Update updates an customer.
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  // SetRisk sets an customer's overall KYC risk.
+  rpc SetRisk(SetRiskRequest) returns (SetRiskResponse);
+  // Delete deletes the specified customer
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+// AddRequest contains information needed to add a new customer.
+message AddRequest { Customer customer = 1; }
+// AddResponse returns the newly created customer for the Add method.
+message AddResponse { Customer customer = 1; }
+
+// QueryRequest represents an customer query with options to filter by
+// free text, and other attributes. Offset and limit are used for
+// response pagination.
+message QueryRequest {
+  int64 offset = 1;
+  int64 limit = 2;
+  string search_text = 3;
+  string source_ref = 4;
+  oneof risk {
+    int32 null = 5;
+    Risk value = 6;
+  }
+}
+// QueryResponse returns a paged list of entities matchin QueryRequest criteria.
+// Matches provides the total number of records matching the query regardless of
+// limit.
+message QueryResponse {
+  repeated Customer data = 1;
+  int64 matches = 2;
+}
+
+// GetRequest is used to specify the customer to retrieve. Degrees can be set to
+// return related entites.
+message GetRequest {
+  string customer_id = 1;
+  int32 degrees = 2;
+}
+// GetResponse returns an individual customer based on the customer id provided
+// inthe GetRequest.
+message GetResponse { Customer customer = 1; }
+
+// UpdateRequest is used when calling the Update method. It contains the
+// complete customer to update.
+message UpdateRequest { Customer customer = 1; }
+// UpdateResponse returns the customer updated by the Update method.
+message UpdateResponse { Customer customer = 1; }
+
+// SetRiskRequest is used to specify the risk level when using the SetRisk
+// method to record a customer's (customer_id) overall risk.
+message SetRiskRequest {
+  string customer_id = 1;
+  Risk risk = 2;
+}
+// SetRiskResponse is returned by the SetRisk method. It is empty so can be
+// safely ignored.
+message SetRiskResponse {}
+
+// DeleteRequest contains arguments need by the Delete method. Specifically, the
+// customer_id for the customer to delete.
+message DeleteRequest {
+  string customer_id = 1;
+  // oneof delete_by {
+  // 	string customer_id = 1;
+  // 	string source_ref = 2;
+  // }
+}
+// DeleteResponse is returned by the Delete method. It is empty so can be safely
+// ignored.
+message DeleteResponse {}
+
+// Risk is the list of values that can be used when setting a person's overall
+// level of risk.
+enum Risk {
+  RISK_UNSPECIFIED = 0;
+  RISK_LOW = 1;
+  RISK_MODERATE = 2;
+  RISK_HIGH = 3;
+}
+
+// Customer represents base customer information common to person and
+// organisation
+message Customer {
+  string id = 1;
+  string purpose = 2;
+  Risk risk = 3;
+  string reg_country = 4;
+  string bus_country = 5;
+  string trade_countries = 6;
+  string pay_countries = 7;
+  double dom_trans_value = 8;
+  int64 dom_trans_volume = 9;
+  string dom_trans_freq = 10;
+  double int_trans_value = 11;
+  int64 int_trans_volume = 12;
+  string int_trans_freq = 13;
+  bool prod_offshore = 14;
+  bool third_party_operate = 15;
+  bool third_party_receipts = 16;
+  bool indirect_relationships = 17;
+  string access_method = 18;
+  string exposure_unregulated = 19;
+  string exposure_shell_co = 20;
+  string exposure_shell_bank = 21;
+  string receive_countries = 22;
+}

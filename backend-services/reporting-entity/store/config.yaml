@@ -1,0 +1,8 @@
+collections:
+  - name: reportingentity
+    indexes:
+      - name: tenant
+        unique: true
+        keys:
+          - field: tenant
+            type: asc

@@ -1,0 +1,93 @@
+{
+  "name": "ekyc-testing-suite",
+  "version": "1.0.0",
+  "description": "Comprehensive testing suite for the eKYC platform including backend, frontend, integration, and performance tests",
+  "main": "ekyc-test-runner.js",
+  "scripts": {
+    "start": "node ekyc-test-runner.js",
+    "test": "node ekyc-test-runner.js --type all",
+    "test:backend": "node ekyc-test-runner.js --type backend",
+    "test:frontend": "node ekyc-test-runner.js --type frontend",
+    "test:integration": "node ekyc-test-runner.js --type integration",
+    "test:performance": "node ekyc-test-runner.js --type performance",
+    "test:smoke": "node ekyc-test-runner.js --type backend --service customer",
+    "test:customer": "node ekyc-test-runner.js --type backend --service customer",
+    "test:identity": "node ekyc-test-runner.js --type backend --service identity",
+    "test:kyc": "node ekyc-test-runner.js --type backend --service kyc-certifier",
+    "test:user": "node ekyc-test-runner.js --type backend --service user",
+    "test:subscription": "node ekyc-test-runner.js --type backend --service subscription",
+    "test:customer-web": "node ekyc-test-runner.js --type frontend --app customer-web",
+    "test:mfe-certifier": "node ekyc-test-runner.js --type frontend --app mfe-certifier",
+    "test:org-web": "node ekyc-test-runner.js --type frontend --app organisation-web",
+    "test:verification-web": "node ekyc-test-runner.js --type frontend --app verification-web",
+    "test:remitter-ux": "node ekyc-test-runner.js --type frontend --app remitter-ux",
+    "test:website": "node ekyc-test-runner.js --type frontend --app website",
+    "test:go": "go test ./ekyc-backend-tests.go",
+    "test:webpack": "webpack --mode=development --config webpack.test.config.js",
+    "test:build": "npm run test:webpack && node test-webpack-bundle.js",
+    "test:watch": "webpack --mode=development --config webpack.test.config.js --watch",
+    "test:ci": "node ekyc-test-runner.js --type all --no-coverage",
+    "deploy:local": "webpack --mode=development --config webpack.test.config.js && webpack serve --config webpack.test.config.js --port 3200",
+    "serve:local": "webpack serve --config webpack.test.config.js --port 3200",
+    "mock:start": "node server.js",
+    "mock:stop": "pkill -f 'node server.js'",
+    "container:build": "podman build -t ekyc-testing .",
+    "container:run": "podman run -e MONGODB_URI=mongodb://host.containers.internal:27017/ekyc_test ekyc-testing",
+    "container:test": "podman run --rm -v $(pwd):/workspace -w /workspace ekyc-testing npm test",
+    "container:clean": "podman rmi ekyc-testing",
+    "help": "node ekyc-test-runner.js --help",
+    "clean": "rm -rf test-reports coverage coverage.out coverage.html dist",
+    "lint": "eslint *.js",
+    "lint:fix": "eslint *.js --fix"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "axios": "^0.24.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0",
+    "html-webpack-plugin": "^5.5.0",
+    "css-loader": "^6.8.0",
+    "style-loader": "^3.3.0",
+    "babel-loader": "^9.1.0",
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "eslint": "^8.44.0",
+    "eslint-plugin-jest": "^27.2.0",
+    "webpack-bundle-analyzer": "^4.9.0",
+    "compression-webpack-plugin": "^10.0.0",
+    "terser-webpack-plugin": "^5.3.0"
+  },
+  "keywords": [
+    "ekyc",
+    "kyc",
+    "identity-verification",
+    "testing",
+    "go",
+    "react",
+    "grpc",
+    "mongodb",
+    "microservices",
+    "compliance",
+    "aml",
+    "cft"
+  ],
+  "author": "eKYC Platform Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/ekyc-platform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/ekyc-platform/issues"
+  },
+  "homepage": "https://github.com/your-org/ekyc-platform#readme"
+}

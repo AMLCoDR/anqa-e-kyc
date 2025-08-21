@@ -1,0 +1,235 @@
+{
+  "summary": {
+    "totalTests": 1,
+    "passed": 0,
+    "failed": 1,
+    "successRate": "0.00%",
+    "totalTime": "48364ms",
+    "timestamp": "2025-08-20T23:05:14.026Z"
+  },
+  "results": [
+    {
+      "testName": "customer-web",
+      "status": "FAIL",
+      "details": "React tests failed: Command failed: npm test -- --coverage --watchAll=false\nnpm error Missing script: \"test\"\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /Users/danielrogers/.npm/_logs/2025-08-20T23_05_13_959Z-debug-0.log\n",
+      "timestamp": "2025-08-20T23:05:14.026Z"
+    }
+  ],
+  "configuration": {
+    "backend": {
+      "services": [
+        "customer",
+        "identity",
+        "kyc-certifier",
+        "user",
+        "subscription",
+        "id-check",
+        "id-verifier",
+        "key-person",
+        "reporting-entity",
+        "vc-issuer"
+      ],
+      "testTimeout": 30000,
+      "coverage": true,
+      "testPatterns": [
+        "*_test.go",
+        "test_*.go"
+      ],
+      "excludePatterns": [
+        "vendor/**",
+        "gen/**"
+      ]
+    },
+    "frontend": {
+      "apps": [
+        "customer-web",
+        "mfe-certifier",
+        "organisation-web",
+        "verification-web",
+        "remitter-ux",
+        "website"
+      ],
+      "testTimeout": 30000,
+      "coverage": true,
+      "testPatterns": [
+        "**/*.test.js",
+        "**/*.test.jsx",
+        "**/*.spec.js",
+        "**/*.spec.jsx"
+      ],
+      "excludePatterns": [
+        "node_modules/**",
+        "dist/**",
+        "build/**"
+      ]
+    },
+    "integration": {
+      "enabled": true,
+      "testTimeout": 60000,
+      "services": {
+        "customer": {
+          "port": 50051,
+          "healthCheck": "/health"
+        },
+        "identity": {
+          "port": 50052,
+          "healthCheck": "/health"
+        },
+        "kyc-certifier": {
+          "port": 50053,
+          "healthCheck": "/health"
+        },
+        "user": {
+          "port": 50054,
+          "healthCheck": "/health"
+        },
+        "subscription": {
+          "port": 50055,
+          "healthCheck": "/health"
+        }
+      },
+      "workflows": [
+        "customer-onboarding",
+        "kyc-verification",
+        "identity-verification",
+        "user-authentication",
+        "subscription-management"
+      ]
+    },
+    "performance": {
+      "enabled": true,
+      "testTimeout": 120000,
+      "thresholds": {
+        "apiResponseTime": {
+          "p50": 100,
+          "p95": 500,
+          "p99": 1000
+        },
+        "databaseQueryTime": {
+          "p50": 50,
+          "p95": 200,
+          "p99": 500
+        },
+        "frontendRenderTime": {
+          "p50": 100,
+          "p95": 300,
+          "p99": 800
+        },
+        "memoryUsage": {
+          "max": "512MB"
+        }
+      },
+      "loadTests": {
+        "concurrentUsers": [
+          1,
+          10,
+          50,
+          100
+        ],
+        "duration": "5m",
+        "rampUp": "30s"
+      }
+    },
+    "database": {
+      "testDatabase": "ekyc_test",
+      "cleanupAfterTests": true,
+      "seedData": true,
+      "seedFiles": [
+        "testdata/customers.json",
+        "testdata/users.json",
+        "testdata/organizations.json"
+      ]
+    },
+    "mocking": {
+      "externalServices": {
+        "auth0": true,
+        "stripe": true,
+        "email": true,
+        "sms": true
+      },
+      "mockPorts": {
+        "auth0": 8081,
+        "stripe": 8082,
+        "email": 8083,
+        "sms": 8084
+      }
+    },
+    "reporting": {
+      "formats": [
+        "json",
+        "html",
+        "junit"
+      ],
+      "outputDir": "test-reports",
+      "coverageThresholds": {
+        "statements": 80,
+        "branches": 75,
+        "functions": 80,
+        "lines": 80
+      }
+    },
+    "environments": {
+      "test": {
+        "baseUrl": "http://localhost:3000",
+        "apiBaseUrl": "http://localhost:50051",
+        "databaseUrl": "mongodb://localhost:27017/ekyc_test"
+      },
+      "staging": {
+        "baseUrl": "https://staging.ekyc.example.com",
+        "apiBaseUrl": "https://api-staging.ekyc.example.com",
+        "databaseUrl": "mongodb://staging-db:27017/ekyc_staging"
+      },
+      "production": {
+        "baseUrl": "https://ekyc.example.com",
+        "apiBaseUrl": "https://api.ekyc.example.com",
+        "databaseUrl": "mongodb://prod-db:27017/ekyc_production"
+      }
+    },
+    "testSuites": {
+      "smoke": {
+        "description": "Quick smoke tests for basic functionality",
+        "tests": [
+          "backend:customer",
+          "frontend:customer-web",
+          "integration:customer-onboarding"
+        ],
+        "timeout": 30000
+      },
+      "regression": {
+        "description": "Full regression test suite",
+        "tests": [
+          "backend:all",
+          "frontend:all",
+          "integration:all",
+          "performance:basic"
+        ],
+        "timeout": 300000
+      },
+      "performance": {
+        "description": "Performance and load testing only",
+        "tests": [
+          "performance:all"
+        ],
+        "timeout": 600000
+      },
+      "security": {
+        "description": "Security and vulnerability testing",
+        "tests": [
+          "security:all"
+        ],
+        "timeout": 120000
+      }
+    },
+    "ci": {
+      "parallel": true,
+      "maxWorkers": 4,
+      "retryFailed": 2,
+      "artifacts": {
+        "testResults": true,
+        "coverage": true,
+        "screenshots": true,
+        "videos": true
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+collections:
+  - name: idverifier
+    audit: true
+    indexes:
+      - name: tenant
+        keys:
+          - field: tenant
+            type: asc
+      - name: idverifierId
+        unique: true
+        keys:
+          - field: tenant
+            type: asc
+          - field: idverifier.id
+            type: asc
+      - name: fullText
+        keys:
+          - field: idverifier.givenNames
+            type: text
+          - field: idverifier.familyName
+            type: text

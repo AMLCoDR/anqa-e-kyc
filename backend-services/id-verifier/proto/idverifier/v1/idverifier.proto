@@ -1,0 +1,127 @@
+syntax = "proto3";
+
+package idverifier.v1;
+
+import "google/api/annotations.proto";
+// import "validate/validate.proto";
+
+// IdVerifierService contains rpc methods used to manage a customer's key
+// people. A key idverifier only exists in the context of a customer — it is
+// effectively the connection between an individual
+service IdVerifierService {
+  // Create creates an idverifier for the specified tenant
+  rpc Create(CreateRequest) returns (CreateResponse);
+  // Query supports querying for entities using criteria in the QueryRequest.
+  rpc Query(QueryRequest) returns (QueryResponse) {
+    option (google.api.http) = {
+      get : "/identities/v1"
+    };
+  };
+  // Get retrieves the idverifier specified in the GetRequest.
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      get : "/identities/v1/{verifier_id}"
+    };
+  };
+  // Update updates an idverifier.
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  // Delete deletes the specified idverifier
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+// CreateRequest contains information needed to create a new idverifier.
+message CreateRequest { IdVerifier verifier = 1; }
+// CreateResponse returns the newly created idverifier for the Create method.
+message CreateResponse { IdVerifier verifier = 1; }
+
+// QueryRequest represents an idverifier query with options to filter by
+// free text, and other attributes. Offset and limit are used for
+// response pagination.
+message QueryRequest {
+  int64 offset = 1;
+  int64 limit = 2;
+  string search_text = 3;
+}
+// QueryResponse returns a paged list of entities matchin QueryRequest criteria.
+// Matches provides the total number of records matching the query regardless of
+// limit.
+message QueryResponse {
+  repeated IdVerifier cursor = 1;
+  int64 matches = 2;
+}
+
+// GetRequest is used to specify the idverifier to retrieve. Degrees can be set
+// to return related entites.
+message GetRequest { string verifier_id = 1; }
+// GetResponse returns a idverifier based on the idverifier id
+// provided inthe GetRequest.
+message GetResponse { IdVerifier verifier = 1; }
+
+// UpdateRequest is used when calling the Update method. It contains the
+// complete idverifier to update.
+message UpdateRequest { IdVerifier verifier = 1; }
+// UpdateResponse returns the idverifier updated by the Update method.
+message UpdateResponse { IdVerifier verifier = 1; }
+
+// DeleteRequest contains arguments need by the Delete method. Specifically, the
+// id of the idverifier to delete.
+message DeleteRequest { string verifier_id = 1; }
+// DeleteResponse is returned by the Delete method. It is empty so can be safely
+// ignored.
+message DeleteResponse {}
+
+// Passport contains information required when the ID check is based on a
+// passport.
+message Passport {
+  string number = 1;
+  string expiry = 2;
+}
+
+// Licence contains information required when the ID check is based on a drivers
+// licence.
+message Licence {
+  string number = 1;
+  string version = 2;
+}
+
+// Address contains information required to verify an address
+message Address {
+  string address_line_1 = 1;
+  string address_line_2 = 2;
+  string suburb = 3;
+  string city = 4;
+  string region = 5;
+  string postcode = 6;
+  string country = 7;
+}
+
+// NationalId contains information required when the ID check is based on a
+// National ID card.
+message NationalId { string number = 1; }
+
+// Claim represents an idverifier claim
+message Claim {
+  oneof subject {
+    Address address = 1;
+    Passport passport = 2;
+    Licence licence = 3;
+    NationalId national_id = 4;
+  }
+}
+
+// IdVerifier represents details of a idverifier required for CDD.
+message IdVerifier {
+  string id = 1;
+  string given_names = 2;
+  string family_name = 3;
+  string birth_date = 4;
+  string birth_place = 5;
+  // Sex is the list of values available to use when specifying sex
+  enum Sex {
+    SEX_UNSPECIFIED = 0;
+    SEX_FEMALE = 1;
+    SEX_MALE = 2;
+  }
+  Sex sex = 6;
+  repeated Claim claims = 7;
+}

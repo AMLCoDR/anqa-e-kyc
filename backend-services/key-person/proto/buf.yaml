@@ -1,0 +1,16 @@
+version: v1
+name: buf.build/anqa/key-person
+deps:
+  - buf.build/anqa/vc-issuer
+  - buf.build/googleapis/googleapis
+  - buf.build/grpc-ecosystem/grpc-gateway
+breaking:
+  use:
+    - FILE
+lint:
+  use:
+    - DEFAULT
+    - COMMENT_ENUM
+    - COMMENT_MESSAGE
+    - COMMENT_RPC
+    - COMMENT_SERVICE

@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package user.v1;
+
+// import "validate/validate.proto";
+
+// UserService provides methods for creating and updating an organisation's users
+service UserService {
+    // SignUp is used when a new user registers to use the app
+    rpc SignUp(SignUpRequest) returns (SignUpResponse);
+    // Add adds a new user to an existing organisation
+    rpc Add(AddRequest) returns (AddResponse);
+    // Query returns a list of users for an organisation
+    rpc Query(QueryRequest) returns (QueryResponse);
+    // Get retrieves the specified user
+    rpc Get(GetRequest) returns (GetResponse);
+    // Update updates the specified user's details
+    rpc Update(UpdateRequest) returns (UpdateResponse);
+    // Delete removes a user from the organisation
+    rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+// User provides basic user information 
+message User {
+    int64 id = 1;
+    string auth0_id = 2;
+    string email = 3;
+    string name = 4;
+}
+
+// SignUpRequest contains data required when calling the SignUp method
+message SignUpRequest {
+    string org_name = 1;
+    string email = 2;
+    string name = 3;
+    string password = 4;
+}
+// SignUpResponse is returned by the SignUp method
+message SignUpResponse {}
+
+// AddRequest contains data required when calling the Add method
+message AddRequest {
+    User user = 1;
+}
+// AddResponse is returned by the Add method
+message AddResponse {
+    User user = 1;
+}
+
+// QueryRequest is used when calling the Query method
+message QueryRequest {}
+// QueryResponse returns a list of users from the Query method
+message QueryResponse {
+    repeated User users = 1;
+}
+
+// GetRequest contains data required when calling the Get method
+message GetRequest {
+    string auth0_id = 1;
+}
+// GetResponse return the specified user when the Get method is called
+message GetResponse {
+    User user = 1;
+}
+
+// UpdateRequest contains data required when calling the Update method
+message UpdateRequest {
+    User user = 1;
+}
+// UpdateResponse is returned by the Update method
+message UpdateResponse {}
+
+// DeleteRequest specifies the user to delete when calling the Delete method
+message DeleteRequest {
+    string auth0_id = 1;
+}
+// DeleteResponse is returned by the Delete method
+message DeleteResponse {}
+
+// SignUpMsg is used by NATS pub/sub
+message SignUpMsg {
+    string tenant = 1;
+    User user = 2;
+}

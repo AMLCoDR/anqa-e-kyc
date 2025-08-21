@@ -1,0 +1,20 @@
+[
+    {
+        "id": "E-1",
+        "sourceRef": "test",
+        "givenNames": "Ken",
+        "familyName": "Lamar"
+    },
+    {
+        "id": "E-2",
+        "sourceRef": "test",
+        "givenNames": "Alexander James",
+        "familyName": "Yang"
+    },
+    {
+        "id": "E-3",
+        "sourceRef": "test",
+        "givenNames": "Nur",
+        "familyName": "Misuari"
+    }
+]

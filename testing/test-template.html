@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eKYC Platform - Test Suite</title>
+    <meta name="description" content="eKYC Platform testing suite for frontend applications">
+    <meta name="keywords" content="ekyc, kyc, testing, webpack, frontend">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        .header h1 {
+            color: #333;
+            margin: 0;
+        }
+        .header p {
+            color: #666;
+            margin: 10px 0 0 0;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        .test-section h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status.pass {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status.warn {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .test-results {
+            margin-top: 20px;
+        }
+        .test-item {
+            padding: 10px;
+            margin: 5px 0;
+            border-left: 4px solid #eee;
+            background: #f9f9f9;
+        }
+        .test-item.pass {
+            border-left-color: #28a745;
+        }
+        .test-item.fail {
+            border-left-color: #dc3545;
+        }
+        .test-item.warn {
+            border-left-color: #ffc107;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 eKYC Platform Test Suite</h1>
+            <p>Webpack-based testing for frontend applications</p>
+        </div>
+
+        <div id="test-status" class="loading">
+            <p>Loading test suite...</p>
+        </div>
+
+        <div class="test-section">
+            <h2>🔧 Webpack Tests</h2>
+            <div id="webpack-tests" class="test-results">
+                <div class="test-item">
+                    <strong>Status:</strong> <span class="status">Pending</span>
+                    <p>Webpack configuration and build tests</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📦 Build Validation</h2>
+            <div id="validation-tests" class="test-results">
+                <div class="test-item">
+                    <strong>Status:</strong> <span class="status">Pending</span>
+                    <p>Bundle size, optimization, and output validation</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎨 Frontend Applications</h2>
+            <div id="frontend-tests" class="test-results">
+                <div class="test-item">
+                    <strong>Customer Web:</strong> <span class="status">Pending</span>
+                </div>
+                <div class="test-item">
+                    <strong>MFE Certifier:</strong> <span class="status">Pending</span>
+                </div>
+                <div class="test-item">
+                    <strong>Organization Web:</strong> <span class="status">Pending</span>
+                </div>
+                <div class="test-item">
+                    <strong>Verification Web:</strong> <span class="status">Pending</span>
+                </div>
+                <div class="test-item">
+                    <strong>Remitter UX:</strong> <span class="status">Pending</span>
+                </div>
+                <div class="test-item">
+                    <strong>Website:</strong> <span class="status">Pending</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Test Summary</h2>
+            <div id="test-summary">
+                <p>Test execution will begin automatically...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize test runner when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 eKYC Test Suite initialized');
+            
+            // Update status
+            document.getElementById('test-status').innerHTML = 
+                '<p>✅ Test suite loaded successfully</p>';
+            
+            // Run tests if test runners are available
+            if (typeof window.WebpackTestRunner !== 'undefined') {
+                runWebpackTests();
+            }
+            
+            if (typeof window.WebpackValidationTests !== 'undefined') {
+                runValidationTests();
+            }
+        });
+
+        function runWebpackTests() {
+            console.log('Running Webpack tests...');
+            const runner = new window.WebpackTestRunner();
+            
+            runner.runAllTests().then(report => {
+                updateTestResults('webpack-tests', report);
+            }).catch(error => {
+                console.error('Webpack tests failed:', error);
+            });
+        }
+
+        function runValidationTests() {
+            console.log('Running validation tests...');
+            const validator = new window.WebpackValidationTests();
+            
+            validator.runAllValidations().then(report => {
+                updateTestResults('validation-tests', report);
+            }).catch(error => {
+                console.error('Validation tests failed:', error);
+            });
+        }
+
+        function updateTestResults(containerId, report) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            let html = '';
+            
+            report.results.forEach(result => {
+                html += `
+                    <div class="test-item ${result.status.toLowerCase()}">
+                        <strong>${result.testName}:</strong> 
+                        <span class="status ${result.status.toLowerCase()}">${result.status}</span>
+                        <p>${result.details}</p>
+                        <small>Time: ${result.timestamp}</small>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            
+            // Update summary
+            updateTestSummary(report);
+        }
+
+        function updateTestSummary(report) {
+            const summaryEl = document.getElementById('test-summary');
+            if (!summaryEl) return;
+            
+            summaryEl.innerHTML = `
+                <p><strong>Total Tests:</strong> ${report.summary.totalTests || report.summary.totalValidations || 0}</p>
+                <p><strong>Passed:</strong> ${report.summary.passed}</p>
+                <p><strong>Failed:</strong> ${report.summary.failed}</p>
+                <p><strong>Warnings:</strong> ${report.summary.warnings || 0}</p>
+                <p><strong>Success Rate:</strong> ${report.summary.successRate}</p>
+                <p><strong>Execution Time:</strong> ${report.summary.totalTime}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

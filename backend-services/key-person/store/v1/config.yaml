@@ -1,0 +1,21 @@
+collections:
+  - name: keyperson
+    audit: true
+    indexes:
+      - name: tenant
+        keys:
+          - field: tenant
+            type: asc
+      - name: personId
+        unique: true
+        keys:
+          - field: tenant
+            type: asc
+          - field: person.id
+            type: asc
+      - name: fullText
+        keys:
+          - field: person.givenNames
+            type: text
+          - field: person.familyName
+            type: text

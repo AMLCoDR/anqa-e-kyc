@@ -1,0 +1,11 @@
+version: v1
+plugins:
+  - name: js
+    out: proto
+    opt:
+      - import_style=commonjs
+  - name: grpc-web
+    out: proto
+    opt:
+      - import_style=commonjs
+      - mode=grpcwebtext

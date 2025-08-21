@@ -1,0 +1,27 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: github.com/anqaml/kyc-certifier/gen/proto/go
+    override:
+      buf.build/envoyproxy/protoc-gen-validate: go.buf.build/library/go/envoyproxy/protoc-gen-validate
+      # buf.build/anqa/customer: go.buf.build/library/go-grpc/anqa/customer
+      # buf.build/anqa/identity: go.buf.build/library/go-grpc/anqa/identity
+      # buf.build/anqa/id-verifier: go.buf.build/library/go-grpc/anqa/id-verifier
+      buf.build/anqa/vc-issuer: go.buf.build/library/go-grpc/anqa/vc-issuer
+    except:
+      - buf.build/googleapis/googleapis
+plugins:
+  - name: go
+    out: gen/proto/go
+    opt: paths=source_relative
+  - name: go-grpc
+    out: gen/proto/go
+    opt: paths=source_relative
+  - name: grpc-gateway
+    out: gen/proto/go
+    opt:
+      - paths=source_relative
+      - generate_unbound_methods=true
+  - name: openapiv2
+    out: gen/proto/openapi

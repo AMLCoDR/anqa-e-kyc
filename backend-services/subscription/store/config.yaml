@@ -1,0 +1,15 @@
+
+collections:
+  - name: subscription
+    indexes:
+      - name: tenant
+        keys:
+          - field: tenant
+            type: asc
+      - name: subscriptionId
+        unique: true
+        keys:
+          - field: tenant
+            type: asc
+          - field: subscription.id
+            type: asc

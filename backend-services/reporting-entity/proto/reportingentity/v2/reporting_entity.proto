@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+package reportingentity.v2;
+
+import "google/api/annotations.proto";
+// import "validate/validate.proto";
+
+// ReportingEntityService contains methods for managing reportingentity data.
+service ReportingEntityService {
+  // Create creates an reportingentity
+  rpc Create(CreateRequest) returns (CreateResponse);
+  // Query retrieves a list of reportingentitys
+  rpc Query(QueryRequest) returns (QueryResponse) {
+    // query string params are mapped to QueryRequest object
+    option (google.api.http) = {
+      get : "/reportingentity/v2"
+    };
+  };
+  // Get retrieves the reportingentity specified
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      get : "/reportingentity/v2"
+    };
+  };
+  // Update updates an reportingentity's details
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  // Delete deletes the specified reportingentity
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+// CreateRequest is used to provide information necessary to create an
+// reportingentity.
+message CreateRequest {
+  string org_name = 1;
+  string contact_name = 2;
+  string contact_email = 3;
+}
+// CreateResponse returns the id of the newly created reportingentity.
+message CreateResponse { ReportingEntity reporting_entity = 1; }
+
+// QueryRequest is used when calling the Query method.
+message QueryRequest {
+  int64 offset = 1;
+  int64 limit = 2;
+}
+// QueryResponse returns a paged list of reportingentitys.
+message QueryResponse {
+  repeated ReportingEntity data = 1;
+  int64 matches = 2;
+}
+
+// GetRequest is required when calling the Get method.
+message GetRequest {}
+// GetResponse is returned by the Get method and contains an reportingentity
+// object.
+message GetResponse { ReportingEntity reporting_entity = 1; }
+
+// UpdateRequest contains data required when calling the Update method.
+message UpdateRequest { ReportingEntity reporting_entity = 1; }
+// UpdateResponse is returned by the Update method and contains an
+// reportingentity object.
+message UpdateResponse { ReportingEntity reporting_entity = 1; }
+
+// DeleteRequest contains data required when calling the Delete method.
+message DeleteRequest {}
+// DeleteResponse is returned by the Delete method.
+message DeleteResponse {}
+
+// ReportingEntity contains information about the reportin gentity
+message ReportingEntity {
+  string id = 1;
+  string name = 2;
+  string org_type = 3;
+  string size = 4;
+  string trading_as = 5;
+  string business_number = 6;
+  string address = 7;
+  string city = 8;
+  string region = 9;
+  string post_code = 10;
+  string country = 11;
+  string phone_number = 12;
+  string website_uri = 13;
+  string contact_name = 14;
+  string contact_phone = 15;
+  string contact_email = 16;
+  string nature = 17;
+  string use_of_id = 18;
+  bool agree_info_security = 19;
+  bool agree_risk_management = 20;
+  bool has_breach_process = 21;
+  bool has_privacy_policy = 22;
+  string privacy_policy_doc_id = 23;
+  bool nz_breach = 24;
+  string nz_breach_detail = 25;
+  string nz_breach_mitigation = 26;
+  bool aus_breach = 27;
+  string aus_breach_detail = 28;
+  string aus_breach_mitigation = 29;
+  bool aus_auto_privacy = 30;
+  bool seek_consent = 31;
+  bool has_consent_wording = 32;
+  string consent_form_doc_id = 33;
+}

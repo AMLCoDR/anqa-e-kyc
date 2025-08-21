@@ -1,0 +1,15 @@
+
+collections:
+  - name: user
+    indexes:
+      - name: tenant
+        keys:
+          - field: tenant
+            type: asc
+      - name: userId
+        unique: true
+        keys:
+          - field: tenant
+            type: asc
+          - field: user.id
+            type: asc

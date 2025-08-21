@@ -1,0 +1,19 @@
+{
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 9000,
+  "pageLoadTimeout": 25000,
+  "env": {
+      "TZ": "Pacific/Auckland"
+  },
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "cypress/results/tests-[hash].xml",
+    "toConsole": true
+  },
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  },
+  "viewportHeight": 800,
+  "viewportWidth": 1280
+}

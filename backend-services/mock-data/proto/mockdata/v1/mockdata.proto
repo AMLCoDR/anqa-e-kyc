@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package mockdata.v1;
+
+import "google/api/annotations.proto";
+// import "validate/validate.proto";
+
+// MockDataService contains rpc methods used for
+// adding and removing mock data.
+service MockDataService {
+  // Create generates mock data and adds it to each connected service
+  rpc Create(CreateRequest) returns (CreateResponse) {
+    option (google.api.http) = {
+      post : "/mockdata/v1"
+    };
+  };
+  // Exists is used to check for the existence of mock data
+  rpc Exists(ExistsRequest) returns (ExistsResponse);
+  // Delete deletes mock data
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+// CreateRequest contains arguments used when creating mock data
+message CreateRequest { Entity entity = 1; }
+// CreateResponse is returned from the Create method. It is empty and can be
+// ignored.
+message CreateResponse {}
+
+// ExistsRequest contains arguments used when checking to see if mock data
+// exists.
+message ExistsRequest { Entity entity = 1; }
+// ExistsResponse is returned from the Exists method.
+message ExistsResponse {
+  bool exists = 1;
+  bool mock = 2;
+  bool user = 3;
+}
+
+// DeleteRequest contains arguments used when deleting mock data.
+message DeleteRequest { Entity entity = 1; }
+// DeleteResponse is returned from the Delete method. It is empty and can be
+// ignored.
+message DeleteResponse {}
+
+// Entity lists possible values for mock data entities
+enum Entity {
+  ENTITY_UNSPECIFIED = 0;
+  ENTITY_TRANSACTION = 1;
+  ENTITY_CUSTOMER = 2;
+}

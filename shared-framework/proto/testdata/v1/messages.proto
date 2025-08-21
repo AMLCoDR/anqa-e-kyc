@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package testdata.v1;
+option go_package = "github.com/anqaml/proto-bson/proto/testdata";
+
+// Status is an example enum
+enum Status {
+    STATUS_UNSPECIFIED = 0;
+    STATUS_TODO = 1;
+    STATUS_DOING = 2;
+    STATUS_DONE = 3;
+}
+
+// Task is an example message containing an enum
+message Task {
+    string title = 1;
+    int32 team = 2;
+    int64 size = 3;
+    bool ready = 4;
+    Status status = 5;
+}
+
+// Info is an example message with a non-standard json name annotation
+message Info {
+    string description = 1 [json_name="@description"];
+    Status status = 2;
+}
+
+// Item is an example message containing a one-of
+message Item {
+    string id = 1;
+    oneof item_type {
+        Task task = 2;
+        Info info = 3;
+    }
+}
+
+// Work is an example message containing an array
+message Work {
+    string id = 1;
+    repeated Item items = 2;
+}

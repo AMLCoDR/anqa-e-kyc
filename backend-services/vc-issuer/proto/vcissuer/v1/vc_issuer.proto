@@ -1,0 +1,217 @@
+syntax = "proto3";
+
+package vcissuer.v1;
+
+// option go_package =
+// "github.com/anqaml/vc-issuer/gen/proto/go/vcissuer/v1;vcissuer";
+
+import "google/api/annotations.proto";
+// import "google/protobuf/any.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+// import "validate/validate.proto";
+
+// VcIssuerService contains rpc methods used to manage a customer's key people.
+// A key person only exists in the context of a customer — it is effectively the
+// connection between an individual
+service VcIssuerService {
+  // Create creates an person for the specified tenant
+  rpc Create(CreateRequest) returns (CreateResponse) {
+    option (google.api.http) = {
+      post : "/credentials/v1"
+      body : "*"
+    };
+  };
+  // Query supports querying for entities using criteria in the QueryRequest.
+  rpc Query(QueryRequest) returns (QueryResponse) {
+    option (google.api.http) = {
+      get : "/credentials/v1"
+    };
+  };
+  // Get retrieves the credential specified in the GetRequest.
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      get : "/credentials/v1/{credential_id}"
+    };
+  };
+  // Delete will delete the credential specified.
+  rpc Delete(DeleteRequest) returns (DeleteResponse) {
+    option (google.api.http) = {
+      delete : "/credentials/v1/{credential_id}"
+    };
+  };
+  // Verify verifies the presented credential.
+  rpc Verify(VerifyRequest) returns (VerifyResponse) {
+    option (google.api.http) = {
+      post : "/credentials/v1/verify"
+      body : "*"
+    };
+  };
+}
+
+// CreateRequest contains information needed to create a new person.
+message CreateRequest {
+  repeated string context = 1 [ json_name = "@context" ];
+  string subject_id = 2;
+  repeated string type = 3;
+  repeated Claim claims = 4;
+  Issuer issuer = 5;
+  bool persist = 6;
+  string tag = 7;
+  bool revocable = 8;
+}
+
+// CreateResponse returns the newly created person for the Create method.
+message CreateResponse { Credential credential = 1; }
+
+// QueryRequest represents an credential query with options to filter by
+// free text, and other attributes. Offset and limit are used for
+// response pagination.
+message QueryRequest {
+  int64 offset = 1;
+  int64 limit = 2;
+  string tag = 3;
+  string type = 4;
+}
+// QueryResponse returns a paged list of credentials matchind QueryRequest
+// criteria. Matches provides the total number of records matching the query
+// regardless of limit.
+message QueryResponse {
+  repeated Credential cursor = 1;
+  int64 matches = 2;
+}
+
+// GetRequest is used to specify the credential to retrieve.
+message GetRequest { string credential_id = 1; }
+// GetResponse returns a credential based on the credential id
+// provided in the GetRequest.
+message GetResponse { Credential credential = 1; }
+
+// DeleteRequest contains information needed to create a new person.
+message DeleteRequest { string credential_id = 1; }
+// DeleteResponse returns an empty response and can be ignored.
+message DeleteResponse {}
+
+// VerifyRequest contains a credential to verify.
+message VerifyRequest { Credential credential = 1; }
+// VerifyResponse returns true if the credential was successfully verified.
+message VerifyResponse { bool verified = 1; }
+
+// Credential represents a W3C VerifiableCredential used to record details of
+// the most recent credential verification(s).
+// https://www.w3.org/TR/vc-data-model/#basic-concepts
+message Credential {
+  repeated google.protobuf.Value context = 1 [ json_name = "@context" ];
+  string id = 2;
+  repeated string type = 3;
+  Issuer issuer = 4;
+  google.protobuf.Timestamp issuance_date = 5;
+  // CredentialSubject holds claims about one or more subjects
+  // https://www.w3.org/TR/vc-data-model/#credential-subject
+  google.protobuf.Struct credential_subject = 6;
+  
+  // Proof holds cryptographic proofs used to detect tampering and verify the
+  // authorship https://www.w3.org/TR/vc-data-model/#proofs-signatures
+  message Proof {
+    string type = 1;
+    string jws = 2;
+    string proof_purpose = 3;
+    string verification_method = 4;
+    string created = 5;
+  }
+  Proof proof = 7;
+}
+
+// Issuer records details of the credential's issuer
+// https://www.w3.org/TR/vc-data-model/#issuer
+message Issuer {
+  string id = 1;
+  string name = 2;
+}
+
+// Claim represents claims this issuer can make about a subject.
+// https://www.w3.org/TR/vc-data-model/#claims
+message Claim {
+  oneof claim {
+    Address address = 1;
+    Passport passport = 2;
+    Licence licence = 3;
+    NationalId national_id = 4;
+    Cdd cdd = 5;
+    Exemption exemption = 6;
+  }
+}
+
+// Passport contains information required when the ID check is based on a
+// passport.
+// https://en.wikipedia.org/wiki/Machine-readable_passport
+message Passport {
+  string passport_number = 1;
+  string given_names = 2;
+  string family_name = 3;
+  string birth_date = 5;
+  string birth_place = 6;
+  string sex = 7;
+  string nationality = 4;
+  string expiry_date = 8;
+}
+
+// Licence contains information required when the ID check is based on a
+// drivers licence.
+message Licence {
+  string licence_number = 1;
+  string given_names = 2;
+  string family_name = 3;
+  string birth_date = 4;
+  string version = 5;
+}
+
+// Address contains information required to verify an address
+message Address {
+  string address_line_1 = 1;
+  string address_line_2 = 2;
+  string suburb = 3;
+  string city = 4;
+  string region = 5;
+  string postcode = 6;
+  string country = 7;
+}
+
+// NationalId contains information required when the ID check is based on
+// a National ID card.
+message NationalId { string number = 1; }
+
+// Cdd represents a CDD certification claim
+// https://www.w3.org/TR/vc-data-model/#issuer
+message Cdd {
+  string given_name = 1;
+  string family_name = 2;
+  string alumni_of = 3;
+}
+
+// Exemption represents a CDD process exemption claim
+// https://www.w3.org/TR/vc-data-model/#issuer
+message Exemption {
+  string exempt_from = 1;
+  string authorised_by = 2;
+}
+
+// // New way of doing claims
+// message ClaimWrapper {
+//   // The name of the claim. The name must match a supported claim.
+//   string name = 1;
+//   // Claim-specific configuration dependent on the claim being
+//   // used. See the supported claims documentation.
+//   google.protobuf.Any config_any = 2;
+// }
+
+// // A typed struct used for specific claim
+// message ClaimBody {
+//   // A URL that uniquely identifies the type of the protocol buffer message.
+//   // This has the same semantics as google.protobuf.Any:
+//   //
+//   https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/any.proto
+//   string type_url = 1;
+//   // A JSON representation of the claim.
+//   google.protobuf.Struct value = 2;
+// }

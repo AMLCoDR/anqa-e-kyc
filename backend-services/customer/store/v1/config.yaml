@@ -1,0 +1,20 @@
+collections:
+  - name: customer
+    indexes:
+      - name: tenant
+        keys:
+          - field: tenant
+            type: asc
+      - name: customerId
+        unique: true
+        keys:
+          - field: tenant
+            type: asc
+          - field: customer.id
+            type: asc
+      - name: fullText
+        keys:
+          - field: customer.name
+            type: text
+          - field: customer.purpose
+            type: text

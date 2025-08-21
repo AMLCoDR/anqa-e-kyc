@@ -1,0 +1,511 @@
+2020-02-02,-120,NZD,Cash Withdrawal,,The Laundromat,E-16
+2020-02-03,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-02-11,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-02-17,1200,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-03-02,800,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-03-04,-19600,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-03-04,-19640,NZD,Debit Transfer,,The Laundromat,E-16
+2020-03-05,-41080,NZD,Debit Transfer,,AtmosComp Inc,E-18
+2020-03-05,6401,NZD,Direct Credit,INV-0016776,Gatekeepers Inc,E-15
+2020-03-05,28850,NZD,Direct Credit,INV-0013065,Quasar Limited,E-20
+2020-03-06,243801,NZD,Direct Credit,INV-0015351,Gravitational LP,E-21
+2020-03-06,243801,NZD,Direct Credit,INV-0015350,Quasar Limited,E-20
+2020-03-08,17751506,NZD,Direct Credit,INV-0012723,Quasar Limited,E-20
+2020-03-11,-24600,SGD,International Payment,,Gatekeepers Inc,E-15
+2020-03-11,-10620,NZD,Loan Payment,,The Laundromat,E-16
+2020-03-11,651000,NZD,Direct Credit,INV-0012230,The Laundromat,E-16
+2020-03-12,3270100,NZD,Direct Credit,INV-0012483,Avid AML Limited,E-13
+2020-03-12,70100,NZD,Direct Credit,INV-0012484,NightSky LLC,E-19
+2020-03-12,797000,NZD,Direct Credit,INV-0012871,The Laundromat,E-16
+2020-03-13,1369,NZD,Direct Credit,INV-0014155,FX Broker Limited,E-14
+2020-03-13,-9610,NZD,Loan Payment,,Quasar Limited,E-20
+2020-03-13,29366,SGD,International Receipt,INV-0018271,The Laundromat,E-16
+2020-03-14,34002,AUD,International Receipt,INV-0015950,AtmosComp Inc,E-18
+2020-03-14,-324,NZD,Bill Pmnt,,Avid AML Limited,E-13
+2020-03-14,-25600,NZD,Loan Payment,,FX Broker Limited,E-14
+2020-03-14,5400,AUD,International Receipt,INV-0016577,NightSky LLC,E-19
+2020-03-15,800000,NZD,Direct Credit,INV-0012899,Gatekeepers Inc,E-15
+2020-03-15,31000,NZD,Direct Credit,INV-0013490,Gatekeepers Inc,E-15
+2020-03-15,-60,NZD,Cash Withdrawal,,Gatekeepers Inc,E-15
+2020-03-15,3401,NZD,Loan Deposit,INV-0015952,NightSky LLC,E-19
+2020-03-15,-85000,SGD,International Payment,,Quasar Limited,E-20
+2020-03-16,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-03-18,-350,NZD,Payment,,AtmosComp Inc,E-18
+2020-03-18,243300,NZD,Direct Credit,INV-0015354,FX Broker Limited,E-14
+2020-03-18,3853,NZD,Direct Credit,INV-0016109,Panama Papers Inc,E-17
+2020-03-18,42657,NZD,Cheque Deposit,INV-0013244,Quasar Limited,E-20
+2020-03-18,-252,NZD,Payment,,The Laundromat,E-16
+2020-03-18,1300,NZD,Direct Credit,INV-0014061,The Laundromat,E-16
+2020-03-19,10660,NZD,Cheque Deposit,INV-0017401,AtmosComp Inc,E-18
+2020-03-19,968522,NZD,Direct Credit,INV-0017206,AtmosComp Inc,E-18
+2020-03-19,603547,NZD,Direct Credit,INV-0016006,NightSky LLC,E-19
+2020-03-20,-26001,NZD,Debit Transfer,,AtmosComp Inc,E-18
+2020-03-20,-7602,AUD,International Payment,,FX Broker Limited,E-14
+2020-03-20,-95,NZD,Payment,,Gatekeepers Inc,E-15
+2020-03-20,-152,NZD,Bill Pmnt,,Panama Papers Inc,E-17
+2020-03-20,-19601,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-03-21,-380,NZD,Payment,,AtmosComp Inc,E-18
+2020-03-21,-2554000,SGD,International Payment,,Avid AML Limited,E-13
+2020-03-21,-1667,SGD,International Payment,,FX Broker Limited,E-14
+2020-03-21,-47022,SGD,International Payment,,FX Broker Limited,E-14
+2020-03-21,10450,AUD,International Receipt,INV-0017350,FX Broker Limited,E-14
+2020-03-21,-46750,SGD,International Payment,,NightSky LLC,E-19
+2020-03-21,-42022,NZD,Internal Transfer,,Panama Papers Inc,E-17
+2020-03-21,-21623,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-03-21,2954,NZD,Direct Credit,INV-0015684,Quasar Limited,E-20
+2020-03-22,6070,AUD,International Receipt,INV-0016709,Avid AML Limited,E-13
+2020-03-25,24390,NZD,Cheque Deposit,INV-0015357,AtmosComp Inc,E-18
+2020-03-25,-17494,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-03-25,-98634,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-03-25,750550,NZD,Direct Credit,INV-0012724,Gravitational LP,E-21
+2020-03-25,222430,NZD,Direct Credit,INV-0015356,NightSky LLC,E-19
+2020-03-25,-19630,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-03-25,-24633,AUD,International Payment,,Panama Papers Inc,E-17
+2020-03-26,-3009,NZD,Cheque Withdrawal,,Avid AML Limited,E-13
+2020-03-26,501420,NZD,Direct Credit,INV-0014264,Gravitational LP,E-21
+2020-03-26,32960,NZD,Direct Credit,INV-0013245,NightSky LLC,E-19
+2020-03-26,19990,NZD,Cheque Deposit,INV-0014964,Panama Papers Inc,E-17
+2020-03-26,-90195,NZD,Cheque Withdrawal,,Quasar Limited,E-20
+2020-03-26,501435,NZD,Direct Credit,INV-0014266,The Laundromat,E-16
+2020-03-27,1650,NZD,Direct Credit,INV-0014580,AtmosComp Inc,E-18
+2020-03-27,1933,NZD,Direct Credit,INV-0014927,Avid AML Limited,E-13
+2020-03-27,34430,NZD,Direct Credit,INV-00116319,Gatekeepers Inc,E-15
+2020-03-27,29560,NZD,Cheque Deposit,INV-0015686,NightSky LLC,E-19
+2020-03-27,2640,NZD,Direct Credit,INV-0015505,NightSky LLC,E-19
+2020-03-27,-28580,AUD,International Payment,,Panama Papers Inc,E-17
+2020-03-27,-92550,AUD,International Payment,,Panama Papers Inc,E-17
+2020-03-27,-48640,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-03-27,5440,NZD,Direct Credit,INV-0016578,Quasar Limited,E-20
+2020-03-28,-980,NZD,Payment,,AtmosComp Inc,E-18
+2020-03-28,-230,NZD,Payment,,Gatekeepers Inc,E-15
+2020-03-28,38850,NZD,Cheque Deposit,INV-0012901,NightSky LLC,E-19
+2020-03-29,-39635,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-03-29,-21330,NZD,Debit Transfer,,Gravitational LP,E-21
+2020-03-29,-275,NZD,Payment,,Gravitational LP,E-21
+2020-03-29,-220,NZD,Payment,,Panama Papers Inc,E-17
+2020-04-03,-600,NZD,Direct Debit,,AtmosComp Inc,E-18
+2020-04-04,601000,NZD,Direct Credit,INV-0011903,Avid AML Limited,E-13
+2020-04-04,-6396,NZD,Loan Payment,,FX Broker Limited,E-14
+2020-04-04,23458,SGD,International Receipt,INV-0015980,Gravitational LP,E-21
+2020-04-05,-800,NZD,Cash Withdrawal,,AtmosComp Inc,E-18
+2020-04-05,2732,NZD,Direct Credit,INV-0001702,Avid AML Limited,E-13
+2020-04-05,4900,NZD,Direct Credit,INV-0016433,FX Broker Limited,E-14
+2020-04-05,-42770,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-04-06,-25600,NZD,Debit Transfer,,The Laundromat,E-16
+2020-04-07,24050,NZD,Cheque Deposit,INV-0015352,AtmosComp Inc,E-18
+2020-04-10,-24600,NZD,Debit Transfer,,AtmosComp Inc,E-18
+2020-04-10,-200,NZD,Cash Withdrawal,,Avid AML Limited,E-13
+2020-04-10,-75,NZD,Direct Debit,,FX Broker Limited,E-14
+2020-04-11,20537,NZD,Direct Credit,INV-0011433,Avid AML Limited,E-13
+2020-04-11,6451200,NZD,Direct Credit,INV-0013898,Gatekeepers Inc,E-15
+2020-04-11,45965,NZD,Direct Credit,INV-0013410,Gatekeepers Inc,E-15
+2020-04-11,-467,NZD,Direct Debit,,NightSky LLC,E-19
+2020-04-11,700000,NZD,Direct Credit,INV-0012485,Quasar Limited,E-20
+2020-04-11,100152,NZD,Direct Credit,INV-0013795,The Laundromat,E-16
+2020-04-12,2696,NZD,Direct Credit,INV-0015554,AtmosComp Inc,E-18
+2020-04-12,-51,NZD,Payment,,FX Broker Limited,E-14
+2020-04-12,1925,NZD,Direct Credit,INV-0014966,FX Broker Limited,E-14
+2020-04-12,-33600,NZD,Loan Payment,,FX Broker Limited,E-14
+2020-04-12,-35600,NZD,Loan Payment,,Gravitational LP,E-21
+2020-04-12,-380,NZD,Payment,,Quasar Limited,E-20
+2020-04-13,-49610,NZD,Debit Transfer,,AtmosComp Inc,E-18
+2020-04-13,-19643,NZD,Debit Transfer,,Gravitational LP,E-21
+2020-04-13,-39572,NZD,Debit Transfer,,Gravitational LP,E-21
+2020-04-13,-19600,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-04-13,750,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-04-13,-251,NZD,Direct Debit,,Panama Papers Inc,E-17
+2020-04-13,-99620,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-04-13,-36640,NZD,Debit Transfer,,Quasar Limited,E-20
+2020-04-13,-25850,SGD,International Payment,,The Laundromat,E-16
+2020-04-14,-16610,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-04-14,-48600,NZD,Cheque Withdrawal,,Gravitational LP,E-21
+2020-04-14,-320,NZD,Payment,,Quasar Limited,E-20
+2020-04-14,-41600,NZD,Debit Transfer,,The Laundromat,E-16
+2020-04-17,210050,NZD,Direct Credit,INV-0015137,Gatekeepers Inc,E-15
+2020-04-17,1650,NZD,Direct Credit,INV-0014645,Gravitational LP,E-21
+2020-04-17,41650,NZD,Cheque Deposit,INV-0012231,Panama Papers Inc,E-17
+2020-04-17,94750,NZD,Cheque Deposit,INV-0017193,The Laundromat,E-16
+2020-04-18,13002,NZD,Direct Credit,INV-0014063,Gravitational LP,E-21
+2020-04-18,451004,NZD,Direct Credit,INV-0013514,NightSky LLC,E-19
+2020-04-18,2125,NZD,Direct Credit,INV-0015119,Panama Papers Inc,E-17
+2020-04-18,-49623,NZD,Debit Transfer,,Quasar Limited,E-20
+2020-04-18,1232,NZD,Direct Credit,INV-0014062,Quasar Limited,E-20
+2020-04-19,14003,NZD,Direct Credit,INV-0014263,Avid AML Limited,E-13
+2020-04-19,2000700,NZD,Direct Credit,INV-0021486,FX Broker Limited,E-14
+2020-04-19,-845,NZD,Internal Transfer,,The Laundromat,E-16
+2020-04-19,-120,NZD,Payment,,The Laundromat,E-16
+2020-04-20,-190,NZD,Payment,,AtmosComp Inc,E-18
+2020-04-20,-33350,NZD,Cheque Withdrawal,,Gatekeepers Inc,E-15
+2020-04-20,-28650,NZD,International Payment,,Gatekeepers Inc,E-15
+2020-04-21,-104,NZD,Bill Pmnt,,NightSky LLC,E-19
+2020-04-21,-19634,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-04-21,-76600,SGD,International Payment,,Quasar Limited,E-20
+2020-04-24,-433,NZD,Bill Pmnt,,Gatekeepers Inc,E-15
+2020-04-24,650000,NZD,Direct Credit,INV-0012232,Gravitational LP,E-21
+2020-04-24,-62143,SGD,International Payment,,NightSky LLC,E-19
+2020-04-24,243360,NZD,Direct Credit,INV-0015355,Quasar Limited,E-20
+2020-04-24,3445,NZD,Direct Credit,INV-0015954,The Laundromat,E-16
+2020-04-24,577400,AUD,International Receipt,INV-0016664,The Laundromat,E-16
+2020-04-25,46000,NZD,Cheque Deposit,INV-0021487,NightSky LLC,E-19
+2020-04-25,1000,NZD,Direct Credit,INV-0013491,NightSky LLC,E-19
+2020-04-25,6640,NZD,Direct Credit,INV-0016820,Quasar Limited,E-20
+2020-04-25,-203,NZD,Direct Debit,,Quasar Limited,E-20
+2020-04-25,950,NZD,Direct Credit,INV-0013369,Quasar Limited,E-20
+2020-04-25,42000,NZD,Cheque Deposit,INV-0014265,The Laundromat,E-16
+2020-04-26,26934,AUD,International Receipt,INV-0016857,AtmosComp Inc,E-18
+2020-04-26,-39650,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-04-26,1640,NZD,Direct Credit,INV-0014579,FX Broker Limited,E-14
+2020-04-26,196087,NZD,Loan Deposit,INV-0014926,FX Broker Limited,E-14
+2020-04-26,514909,NZD,Direct Credit,INV-0019523,Gatekeepers Inc,E-15
+2020-04-26,-21140,NZD,Loan Payment,,Panama Papers Inc,E-17
+2020-04-26,1249400,NZD,Direct Credit,INV-0019662,The Laundromat,E-16
+2020-04-27,-28033,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2020-04-27,-35500,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2020-04-27,-963560,NZD,Loan Payment,,Gravitational LP,E-21
+2020-04-27,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-04-28,-82170,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-04-28,-22330,NZD,Loan Payment,,FX Broker Limited,E-14
+2020-04-28,5430000,AUD,International Receipt,INV-0015359,Quasar Limited,E-20
+2020-04-28,-1634,NZD,Debit Transfer,,The Laundromat,E-16
+2020-04-28,329040,NZD,Direct Credit,INV-0013246,The Laundromat,E-16
+2020-04-28,-180000,NZD,Payment,,The Laundromat,E-16
+2020-05-01,1240,NZD,Direct Credit,INV-0013899,The Laundromat,E-16
+2020-05-02,-39650,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-05-04,-25540000,NZD,International Payment,,Avid AML Limited,E-13
+2020-05-04,-22480,AUD,International Payment,,The Laundromat,E-16
+2020-05-05,-346563,NZD,Loan Payment,,Avid AML Limited,E-13
+2020-05-06,694500,NZD,Direct Credit,INV-0001894,NightSky LLC,E-19
+2020-05-06,35650,NZD,Direct Credit,INV-0012229,Quasar Limited,E-20
+2020-05-06,-750,NZD,Cash Withdrawal,,The Laundromat,E-16
+2020-05-07,-600,NZD,Direct Debit,,Avid AML Limited,E-13
+2020-05-07,-19620,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-05-07,-39620,NZD,Debit Transfer,,Gatekeepers Inc,E-15
+2020-05-07,-29600,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-05-07,11400,SGD,International Receipt,INV-0017477,Panama Papers Inc,E-17
+2020-05-08,-300,NZD,Bill Pmnt,,Gatekeepers Inc,E-15
+2020-05-08,1497,NZD,Direct Credit,INV-0014441,NightSky LLC,E-19
+2020-05-11,-7305,AUD,International Payment,,Gatekeepers Inc,E-15
+2020-05-11,-80,NZD,Payment,,Panama Papers Inc,E-17
+2020-05-11,9999,NZD,Cash Deposit,INV-0014644,Panama Papers Inc,E-17
+2020-05-12,601000,NZD,Direct Credit,INV-0011904,AtmosComp Inc,E-18
+2020-05-12,23554,NZD,Direct Credit,INV-0017028,FX Broker Limited,E-14
+2020-05-12,350872,NZD,Direct Credit,INV-0013108,FX Broker Limited,E-14
+2020-05-12,13008,NZD,Direct Credit,INV-0001869,Panama Papers Inc,E-17
+2020-05-13,-43342,NZD,Debit Transfer,,Gatekeepers Inc,E-15
+2020-05-13,-19610,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-05-14,540050,NZD,Direct Credit,INV-0016576,Gravitational LP,E-21
+2020-05-15,22401,AUD,International Receipt,INV-0015353,AtmosComp Inc,E-18
+2020-05-15,-16600,NZD,Debit Transfer,,The Laundromat,E-16
+2020-05-17,-629,NZD,Bill Pmnt,,The Laundromat,E-16
+2020-05-18,35625,NZD,Direct Credit,INV-0012081,Gatekeepers Inc,E-15
+2020-05-18,937144,NZD,Direct Credit,INV-0017161,NightSky LLC,E-19
+2020-05-19,1585,NZD,Direct Credit,INV-0014559,Gravitational LP,E-21
+2020-05-19,451129,NZD,Direct Credit,INV-0013753,Quasar Limited,E-20
+2020-05-20,-960665,NZD,Loan Payment,,Avid AML Limited,E-13
+2020-05-20,-250,NZD,Direct Debit,,FX Broker Limited,E-14
+2020-05-21,3457,NZD,Direct Credit,INV-0015981,The Laundromat,E-16
+2020-05-22,-18691,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-05-22,-19656,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-05-22,34065,NZD,Direct Credit,INV-0015953,Quasar Limited,E-20
+2020-05-25,-119,NZD,Payment,,Avid AML Limited,E-13
+2020-05-25,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-05-26,8650,NZD,Direct Credit,INV-0017097,Avid AML Limited,E-13
+2020-05-26,-843,NZD,Bill Pmnt,,Gatekeepers Inc,E-15
+2020-05-26,-439,NZD,Bill Pmnt,,Gatekeepers Inc,E-15
+2020-05-26,31220,NZD,Cheque Deposit,INV-0013109,NightSky LLC,E-19
+2020-05-27,-60,NZD,Direct Debit,,AtmosComp Inc,E-18
+2020-05-27,-220,NZD,Payment,,Avid AML Limited,E-13
+2020-05-27,1650,NZD,Direct Credit,INV-0014647,FX Broker Limited,E-14
+2020-05-28,2440,NZD,Direct Credit,INV-0015358,Quasar Limited,E-20
+2020-05-28,-24850,NZD,Debit Transfer,,The Laundromat,E-16
+2020-05-29,-49604,NZD,Debit Transfer,,FX Broker Limited,E-14
+2020-05-29,-108,NZD,Payment,,Gatekeepers Inc,E-15
+2020-05-29,-630,NZD,Payment,,Gravitational LP,E-21
+2020-05-29,-9640,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-05-29,343400,AUD,International Receipt,INV-0015955,Panama Papers Inc,E-17
+2020-06-01,6053,NZD,Direct Credit,INV-0011986,The Laundromat,E-16
+2020-06-02,-21634,NZD,Debit Transfer,,The Laundromat,E-16
+2020-06-03,-123,NZD,Payment,,Gatekeepers Inc,E-15
+2020-06-04,-24733,NZD,Internal Transfer,,Gatekeepers Inc,E-15
+2020-06-04,-200,NZD,Cash Withdrawal,,Panama Papers Inc,E-17
+2020-06-04,33565,NZD,Cheque Deposit,INV-0014804,The Laundromat,E-16
+2020-06-06,10400,NZD,Direct Credit,INV-0017347,Gravitational LP,E-21
+2020-06-06,-39610,NZD,Debit Transfer,,Gravitational LP,E-21
+2020-06-06,-1855670,NZD,Loan Payment,,Panama Papers Inc,E-17
+2020-06-07,-544,NZD,Payment,,Avid AML Limited,E-13
+2020-06-07,1700,NZD,Direct Credit,INV-0014703,Avid AML Limited,E-13
+2020-06-07,10400,NZD,Direct Credit,INV-0017348,Quasar Limited,E-20
+2020-06-08,1200,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-06-10,-61,NZD,Payment,,FX Broker Limited,E-14
+2020-06-11,173343,SGD,International Receipt,INV-0014739,Avid AML Limited,E-13
+2020-06-12,-19600,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-06-13,3400,NZD,Direct Credit,INV-0015951,Gravitational LP,E-21
+2020-06-17,8400,NZD,Direct Credit,INV-0017073,AtmosComp Inc,E-18
+2020-06-17,505235,NZD,Direct Credit,INV-0016502,Avid AML Limited,E-13
+2020-06-17,6653,NZD,Direct Credit,INV-0012300,Avid AML Limited,E-13
+2020-06-18,776050,NZD,Direct Credit,INV-0016988,FX Broker Limited,E-14
+2020-06-18,944050,NZD,Direct Credit,INV-0013350,FX Broker Limited,E-14
+2020-06-18,1465,NZD,Direct Credit,INV-0014409,FX Broker Limited,E-14
+2020-06-19,-206,AUD,International Payment,,Gatekeepers Inc,E-15
+2020-06-20,16550,NZD,Direct Credit,INV-0014646,NightSky LLC,E-19
+2020-06-20,-60,NZD,Direct Debit,,The Laundromat,E-16
+2020-06-20,2880344,NZD,Direct Credit,INV-0012900,The Laundromat,E-16
+2020-06-21,-8520,SGD,International Payment,,Gatekeepers Inc,E-15
+2020-06-21,4207,NZD,Direct Credit,INV-0016224,Gravitational LP,E-21
+2020-06-21,104055,NZD,Direct Credit,INV-0017351,Gravitational LP,E-21
+2020-06-21,10445,NZD,Direct Credit,INV-0017352,The Laundromat,E-16
+2020-06-22,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-06-24,2954,NZD,Direct Credit,INV-0015685,Gravitational LP,E-21
+2020-06-25,33480,NZD,Cheque Deposit,INV-0015876,AtmosComp Inc,E-18
+2020-06-27,-27640,AUD,International Payment,,Avid AML Limited,E-13
+2020-06-27,-820,NZD,Bill Pmnt,,FX Broker Limited,E-14
+2020-06-27,-56,NZD,Direct Debit,,FX Broker Limited,E-14
+2020-06-27,20430,NZD,Direct Credit,INV-0017997,Gatekeepers Inc,E-15
+2020-06-27,-1467,NZD,Internal Transfer,,Panama Papers Inc,E-17
+2020-06-27,-4675,NZD,Internal Transfer,,Panama Papers Inc,E-17
+2020-06-28,-360,NZD,Direct Debit,,Avid AML Limited,E-13
+2020-06-28,702000,NZD,Direct Credit,INV-0012488,Gatekeepers Inc,E-15
+2020-07-01,6030,NZD,Direct Credit,INV-0011905,FX Broker Limited,E-14
+2020-07-02,-35634,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2020-07-02,-42140,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2020-07-06,-96030,SGD,International Payment,,FX Broker Limited,E-14
+2020-07-06,-9630,SGD,International Payment,,FX Broker Limited,E-14
+2020-07-06,7750,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-07-09,-420,NZD,Payment,,FX Broker Limited,E-14
+2020-07-09,-567620,NZD,Loan Payment,,The Laundromat,E-16
+2020-07-09,-299,NZD,Payment,,The Laundromat,E-16
+2020-07-09,-60,NZD,Payment,,The Laundromat,E-16
+2020-07-10,602,NZD,Cash Deposit,INV-0011906,Avid AML Limited,E-13
+2020-07-10,1054,NZD,Direct Credit,INV-0001514,Avid AML Limited,E-13
+2020-07-10,-60,NZD,Payment,,FX Broker Limited,E-14
+2020-07-10,676100,NZD,Direct Credit,INV-0012359,Quasar Limited,E-20
+2020-07-11,187800,AUD,International Receipt,INV-0014872,Gravitational LP,E-21
+2020-07-11,727,NZD,Cash Deposit,INV-0012489,NightSky LLC,E-19
+2020-07-11,501412,NZD,Direct Credit,INV-0014267,The Laundromat,E-16
+2020-07-19,-98,NZD,Payment,,AtmosComp Inc,E-18
+2020-07-20,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-07-20,63434,AUD,International Receipt,INV-0015955,Panama Papers Inc,E-17
+2020-07-23,10660,NZD,Cheque Deposit,INV-0017401,AtmosComp Inc,E-18
+2020-07-23,-32105,NZD,Debit Transfer,,Gravitational LP,E-21
+2020-07-24,-9640,NZD,Debit Transfer,,Quasar Limited,E-20
+2020-07-25,501430,NZD,Direct Credit,INV-0014263,Avid AML Limited,E-13
+2020-07-26,-19640,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-07-27,-7620,AUD,International Payment,,FX Broker Limited,E-14
+2020-07-27,900457,NZD,Direct Credit,INV-0015981,The Laundromat,E-16
+2020-07-28,43350,NZD,Cheque Deposit,,Gatekeepers Inc,E-15
+2020-07-28,-43350,NZD,Cheque Withdrawal,,Gatekeepers Inc,E-15
+2020-07-28,-8820,NZD,International Payment,,Gatekeepers Inc,E-15
+2020-07-29,-253,NZD,Bill Pmnt,,Avid AML Limited,E-13
+2020-07-29,-2470,SGD,International Payment,,FX Broker Limited,E-14
+2020-08-03,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-08-05,-9630,SGD,International Payment,,AtmosComp Inc,E-18
+2020-08-05,-23312,NZD,Debit Transfer,,FX Broker Limited,E-14
+2020-08-06,-9630,SGD,International Payment,,FX Broker Limited,E-14
+2020-08-11,-65,NZD,Payment,,FX Broker Limited,E-14
+2020-08-12,-132,NZD,Direct Debit,,Gatekeepers Inc,E-15
+2020-08-12,36610,NZD,Cheque Deposit,,Gatekeepers Inc,E-15
+2020-08-12,-38610,NZD,Cheque Withdrawal,,NightSky LLC,E-19
+2020-08-13,-160,NZD,Payment,,FX Broker Limited,E-14
+2020-08-13,-9635,SGD,International Payment,,Gatekeepers Inc,E-15
+2020-08-16,-180,NZD,Payment,,Avid AML Limited,E-13
+2020-08-16,-1143923,NZD,Loan Payment,,Panama Papers Inc,E-17
+2020-08-16,2423,NZD,Direct Credit,INV-0015358,Quasar Limited,E-20
+2020-08-17,580,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-08-17,-850,NZD,Cash Withdrawal,,The Laundromat,E-16
+2020-08-18,42833,NZD,Cheque Deposit,,FX Broker Limited,E-14
+2020-08-18,-2833,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2020-08-18,-94627,NZD,Loan Payment,,Gravitational LP,E-21
+2020-08-18,-34850,NZD,Debit Transfer,,The Laundromat,E-16
+2020-08-19,-199,NZD,Payment,,Gatekeepers Inc,E-15
+2020-08-20,2242122,AUD,International Receipt,INV-0015359,Quasar Limited,E-20
+2020-08-23,-9633,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-08-24,20727,NZD,Direct Credit,INV-0021486,FX Broker Limited,E-14
+2020-08-26,-20640,NZD,Debit Transfer,,AtmosComp Inc,E-18
+2020-08-26,-650,NZD,Bill Pmnt,,Panama Papers Inc,E-17
+2020-08-27,-94640,NZD,Loan Payment,,Avid AML Limited,E-13
+2020-08-27,2930,NZD,Direct Credit,INV-0015684,Quasar Limited,E-20
+2020-08-27,288500,NZD,Direct Credit,INV-0012900,The Laundromat,E-16
+2020-08-28,-116,NZD,Bill Pmnt,,Avid AML Limited,E-13
+2020-08-28,-4660,SGD,International Payment,,NightSky LLC,E-19
+2020-08-28,-610,NZD,Direct Debit,,The Laundromat,E-16
+2020-08-29,-8880,SGD,International Payment,,Gravitational LP,E-21
+2020-09-03,-280,NZD,Direct Debit,,FX Broker Limited,E-14
+2020-09-04,-18345,NZD,Internal Transfer,,Panama Papers Inc,E-17
+2020-09-04,46990,NZD,Direct Credit,INV-0015953,Quasar Limited,E-20
+2020-09-05,-33600,NZD,Loan Payment,,FX Broker Limited,E-14
+2020-09-11,10410,NZD,Direct Credit,INV-0017353,Gravitational LP,E-21
+2020-09-12,-8580,AUD,International Payment,,Panama Papers Inc,E-17
+2020-09-12,-213,NZD,Payment,,The Laundromat,E-16
+2020-09-13,-21140,NZD,Loan Payment,,Panama Papers Inc,E-17
+2020-09-14,680,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-09-15,23564,NZD,Cheque Deposit,INV-0012901,NightSky LLC,E-19
+2020-09-15,-90023,AUD,International Payment,,Panama Papers Inc,E-17
+2020-09-16,250999,NZD,Loan Deposit,INV-0014926,FX Broker Limited,E-14
+2020-09-16,-212,NZD,Bill Pmnt,,FX Broker Limited,E-14
+2020-09-16,20423,NZD,Direct Credit,INV-0017997,Gatekeepers Inc,E-15
+2020-09-17,-356,NZD,Direct Debit,,FX Broker Limited,E-14
+2020-09-17,43350,NZD,Cheque Deposit,,FX Broker Limited,E-14
+2020-09-17,-37350,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2020-09-17,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-09-17,243008,NZD,Direct Credit,INV-0015954,The Laundromat,E-16
+2020-09-18,705007,NZD,Direct Credit,INV-0012488,Gatekeepers Inc,E-15
+2020-09-18,923,NZD,Direct Credit,INV-0013246,The Laundromat,E-16
+2020-09-19,-21632,NZD,Debit Transfer,,The Laundromat,E-16
+2020-09-20,-6460,NZD,Cash Withdrawal,,Panama Papers Inc,E-17
+2020-09-22,-9623,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-09-24,13050,NZD,Cheque Deposit,INV-0017349,Panama Papers Inc,E-17
+2020-09-25,-250,NZD,Direct Debit,,FX Broker Limited,E-14
+2020-09-25,-300,NZD,Bill Pmnt,,Gatekeepers Inc,E-15
+2020-09-25,45642,NZD,Cheque Deposit,,Gravitational LP,E-21
+2020-09-25,-4564,NZD,Cheque Withdrawal,,Gravitational LP,E-21
+2020-09-25,1640,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-09-25,235988,NZD,Direct Credit,INV-0015981,The Laundromat,E-16
+2020-09-26,-190,NZD,Payment,,Gatekeepers Inc,E-15
+2020-09-26,-20650,AUD,International Payment,,Gatekeepers Inc,E-15
+2020-09-26,15650,NZD,Direct Credit,INV-0014646,NightSky LLC,E-19
+2020-09-26,-20,NZD,Payment,,The Laundromat,E-16
+2020-09-27,10440,AUD,International Receipt,INV-0017350,FX Broker Limited,E-14
+2020-09-27,-31623,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-09-28,-1630,SGD,International Payment,,FX Broker Limited,E-14
+2020-09-28,-95630,NZD,Loan Payment,,Gravitational LP,E-21
+2020-09-28,15430,NZD,Direct Credit,INV-0015981,The Laundromat,E-16
+2020-10-04,11232,AUD,International Receipt,INV-0017350,FX Broker Limited,E-14
+2020-10-05,1656848,AUD,International Receipt,INV-0016709,Gatekeepers Inc,E-15
+2020-10-06,-119,NZD,Payment,,FX Broker Limited,E-14
+2020-10-06,12994,NZD,Direct Credit,INV-0016006,NightSky LLC,E-19
+2020-10-06,-22330,NZD,Loan Payment,,NightSky LLC,E-19
+2020-10-07,-34639,NZD,Loan Payment,,Avid AML Limited,E-13
+2020-10-10,16998,NZD,Direct Credit,INV-0016109,Avid AML Limited,E-13
+2020-10-10,-53044,SGD,International Payment,,Gatekeepers Inc,E-15
+2020-10-18,-27333,SGD,International Payment,,FX Broker Limited,E-14
+2020-10-18,234987,NZD,Direct Credit,INV-0016433,FX Broker Limited,E-14
+2020-10-18,17319,NZD,Direct Credit,INV-0016224,Gravitational LP,E-21
+2020-10-18,-220,NZD,Payment,,The Laundromat,E-16
+2020-10-19,944387,SGD,International Receipt,INV-0015980,Gravitational LP,E-21
+2020-10-20,186345,NZD,Direct Credit,INV-0016502,Avid AML Limited,E-13
+2020-10-20,-250,NZD,Direct Debit,,FX Broker Limited,E-14
+2020-10-20,23090,NZD,Cheque Deposit,,Gatekeepers Inc,E-15
+2020-10-20,-23090,NZD,Cheque Withdrawal,,Gatekeepers Inc,E-15
+2020-10-20,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-10-20,-3453,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-10-20,-629,NZD,Bill Pmnt,,The Laundromat,E-16
+2020-10-25,-96004,NZD,Loan Payment,,Avid AML Limited,E-13
+2020-10-29,-34234,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-10-29,-18442,SGD,International Payment,,FX Broker Limited,E-14
+2020-10-29,125873,NZD,Direct Credit,INV-0016576,Gravitational LP,E-21
+2020-11-03,-61850,NZD,Loan Payment,,Panama Papers Inc,E-17
+2020-11-04,-116,NZD,Bill Pmnt,,Avid AML Limited,E-13
+2020-11-04,-45009,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2020-11-04,-630,NZD,Payment,,FX Broker Limited,E-14
+2020-11-04,23598,NZD,Direct Credit,INV-0016776,Gatekeepers Inc,E-15
+2020-11-04,-23875,NZD,Debit Transfer,,Gatekeepers Inc,E-15
+2020-11-04,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-11-04,184765,NZD,Direct Credit,INV-0016578,Quasar Limited,E-20
+2020-11-04,-60,NZD,Direct Debit,,Quasar Limited,E-20
+2020-11-04,-42698,NZD,Debit Transfer,,The Laundromat,E-16
+2020-11-10,199998,AUD,International Receipt,INV-0016664,The Laundromat,E-16
+2020-11-17,-77854,NZD,Loan Payment,,Avid AML Limited,E-13
+2020-11-21,-108,NZD,Payment,,AtmosComp Inc,E-18
+2020-11-21,-23434,NZD,Debit Transfer,,Avid AML Limited,E-13
+2020-11-21,180434,NZD,Direct Credit,INV-0016820,Quasar Limited,E-20
+2020-11-24,-6994,AUD,International Payment,,FX Broker Limited,E-14
+2020-11-24,87899,NZD,Direct Credit,INV-0016988,Panama Papers Inc,E-17
+2020-11-24,-18765,NZD,Debit Transfer,,The Laundromat,E-16
+2020-11-29,-99823,NZD,Loan Payment,,Avid AML Limited,E-13
+2020-11-29,56756,NZD,Direct Credit,INV-0017028,FX Broker Limited,E-14
+2020-11-29,-34989,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2020-11-29,-643,NZD,Bill Pmnt,,Gatekeepers Inc,E-15
+2020-11-29,-18998,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-11-29,700,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2020-11-29,-60,NZD,Direct Debit,,The Laundromat,E-16
+2020-12-02,-403,NZD,Bill Pmnt,,Panama Papers Inc,E-17
+2020-12-08,523992,AUD,International Receipt,INV-0016857,AtmosComp Inc,E-18
+2020-12-08,34543,NZD,Direct Credit,INV-0017073,AtmosComp Inc,E-18
+2020-12-08,36540,NZD,Direct Credit,INV-0017097,Avid AML Limited,E-13
+2020-12-08,-123,NZD,Payment,,FX Broker Limited,E-14
+2020-12-08,-64430,NZD,International Payment,,Gatekeepers Inc,E-15
+2020-12-08,-19999,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-12-08,-34922,NZD,Debit Transfer,,Panama Papers Inc,E-17
+2020-12-08,-65343,NZD,Loan Payment,,Panama Papers Inc,E-17
+2020-12-11,51362,NZD,Cheque Deposit,,Panama Papers Inc,E-17
+2020-12-11,-1362,NZD,Cheque Withdrawal,,Panama Papers Inc,E-17
+2020-12-19,46980,NZD,Cheque Deposit,INV-0017349,Gatekeepers Inc,E-15
+2020-12-20,-544,NZD,Payment,,FX Broker Limited,E-14
+2020-12-20,35487,NZD,Direct Credit,INV-0017161,NightSky LLC,E-19
+2020-12-20,-3201,NZD,Debit Transfer,,NightSky LLC,E-19
+2020-12-21,-116,NZD,Bill Pmnt,,Avid AML Limited,E-13
+2020-12-26,-722034,NZD,Loan Payment,,The Laundromat,E-16
+2020-12-31,543,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2021-01-04,-56231,NZD,Loan Payment,,Panama Papers Inc,E-17
+2021-01-05,402085,NZD,Direct Credit,INV-0017206,AtmosComp Inc,E-18
+2021-01-05,-61,NZD,Payment,,Avid AML Limited,E-13
+2021-01-05,-43344,NZD,Debit Transfer,,The Laundromat,E-16
+2021-01-06,-24339,NZD,Debit Transfer,,Avid AML Limited,E-13
+2021-01-06,76989,NZD,Direct Credit,INV-0017347,Gravitational LP,E-21
+2021-01-06,-3544,NZD,Internal Transfer,,The Laundromat,E-16
+2021-01-07,-27049,NZD,Debit Transfer,,Avid AML Limited,E-13
+2021-01-07,-56,NZD,Direct Debit,,FX Broker Limited,E-14
+2021-01-07,23746,NZD,Cheque Deposit,,FX Broker Limited,E-14
+2021-01-07,-23746,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2021-01-07,-439,NZD,Bill Pmnt,,Gatekeepers Inc,E-15
+2021-01-07,-62231,NZD,Loan Payment,,Gravitational LP,E-21
+2021-01-07,623,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2021-01-07,56487,NZD,Direct Credit,INV-0017348,Quasar Limited,E-20
+2021-01-08,-18995,SGD,International Payment,,FX Broker Limited,E-14
+2021-01-08,23869,NZD,Direct Credit,INV-0015350,Quasar Limited,E-20
+2021-01-08,-43229,NZD,Debit Transfer,,The Laundromat,E-16
+2021-01-17,-8665,SGD,International Payment,,AtmosComp Inc,E-18
+2021-01-17,-360,NZD,Direct Debit,,Avid AML Limited,E-13
+2021-01-17,95475,NZD,Direct Credit,INV-0015354,FX Broker Limited,E-14
+2021-01-17,7050,NZD,Cheque Deposit,,FX Broker Limited,E-14
+2021-01-17,-47050,NZD,Cheque Withdrawal,,FX Broker Limited,E-14
+2021-01-17,-54303,NZD,Debit Transfer,,FX Broker Limited,E-14
+2021-01-17,78568,NZD,Direct Credit,INV-0015351,Gravitational LP,E-21
+2021-01-17,-24504,NZD,Debit Transfer,,NightSky LLC,E-19
+2021-01-19,-725,NZD,Bill Pmnt,,Avid AML Limited,E-13
+2021-01-23,-299,NZD,Payment,,Gatekeepers Inc,E-15
+2021-01-23,-9641,NZD,Debit Transfer,,NightSky LLC,E-19
+2021-01-23,39873,NZD,Direct Credit,INV-0015355,Quasar Limited,E-20
+2021-01-24,485434,AUD,International Receipt,INV-0015359,Quasar Limited,E-20
+2021-01-28,-3040,NZD,Cash Withdrawal,,Panama Papers Inc,90
+2021-01-30,-43288,NZD,Debit Transfer,,Avid AML Limited,E-13
+2021-01-30,-7743,NZD,Loan Payment,,Avid AML Limited,E-13
+2021-01-30,-23988,SGD,International Payment,,FX Broker Limited,E-14
+2021-01-30,-43477,NZD,Debit Transfer,,Gravitational LP,E-21
+2021-01-30,55489,NZD,Direct Credit,INV-0015356,NightSky LLC,E-19
+2021-01-30,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2021-01-30,12894,SGD,International Receipt,INV-0017477,Panama Papers Inc,E-17
+2021-01-30,8955,NZD,Direct Credit,INV-0015358,Quasar Limited,E-20
+2021-01-31,-30023,NZD,Debit Transfer,,NightSky LLC,E-19
+2021-01-31,18754,NZD,Direct Credit,INV-0015358,Quasar Limited,E-20
+2021-01-31,-420,NZD,Payment,,The Laundromat,E-16
+2021-02-02,8080,NZD,Cheque Deposit,,AtmosComp Inc,E-18
+2021-02-02,-54003,NZD,Debit Transfer,,Gravitational LP,E-21
+2021-02-02,-8080,NZD,Cheque Withdrawal,,Gravitational LP,E-21
+2021-02-05,-60,NZD,Payment,,Gatekeepers Inc,E-15
+2021-02-05,2378,NZD,Direct Credit,INV-0015505,NightSky LLC,E-19
+2021-02-05,-29054,NZD,Debit Transfer,,The Laundromat,E-16
+2021-02-06,23440,AUD,International Receipt,INV-0015353,AtmosComp Inc,E-18
+2021-02-06,-193,NZD,Bill Pmnt,,The Laundromat,E-16
+2021-02-07,-24999,NZD,Debit Transfer,,AtmosComp Inc,E-18
+2021-02-07,89754,NZD,Direct Credit,INV-0013410,Gatekeepers Inc,E-15
+2021-02-07,-6445,SGD,International Payment,,NightSky LLC,E-19
+2021-02-09,-15499,NZD,Loan Payment,,FX Broker Limited,E-14
+2021-02-10,-253,NZD,Bill Pmnt,,Avid AML Limited,E-13
+2021-02-10,19545,NZD,Cheque Deposit,,Gatekeepers Inc,E-15
+2021-02-10,-19545,NZD,Cheque Withdrawal,,Gatekeepers Inc,E-15
+2021-02-10,5833,NZD,Direct Credit,INV-0013490,Gatekeepers Inc,E-15
+2021-02-10,-132,NZD,Direct Debit,,Gatekeepers Inc,E-15
+2021-02-10,-18540,NZD,Debit Transfer,,Gravitational LP,E-21
+2021-02-10,380,NZD,Cash Deposit,,Panama Papers Inc,E-17
+2021-02-13,-22430,NZD,Loan Payment,,Gravitational LP,E-21
+2021-02-16,4320,NZD,Loan Deposit,INV-0015952,NightSky LLC,E-19
+2021-02-17,-23002,NZD,Debit Transfer,,NightSky LLC,E-19
+2021-02-17,-18445,NZD,Loan Payment,,Panama Papers Inc,E-17
+2021-02-17,54005,NZD,Direct Credit,INV-0015355,Quasar Limited,E-20
+2021-02-17,-25,NZD,Payment,,The Laundromat,E-16
+2021-02-22,2398,NZD,Direct Credit,INV-0015356,NightSky LLC,E-19
+2021-02-23,-16550,NZD,Internal Transfer,,Gatekeepers Inc,E-15
+2021-02-26,-140,NZD,Direct Debit,,The Laundromat,E-16
+2021-02-28,-920,NZD,Bill Pmnt,,FX Broker Limited,E-14
+2021-02-28,380,NZD,Cash Deposit,,Panama Papers Inc,89

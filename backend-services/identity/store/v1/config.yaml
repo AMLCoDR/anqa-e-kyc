@@ -1,0 +1,21 @@
+collections:
+  - name: identity
+    audit: true
+    indexes:
+      - name: tenant
+        keys:
+          - field: tenant
+            type: asc
+      - name: identityId
+        unique: true
+        keys:
+          - field: tenant
+            type: asc
+          - field: identity.id
+            type: asc
+      - name: fullText
+        keys:
+          - field: identity.givenNames
+            type: text
+          - field: identity.familyName
+            type: text

@@ -1,0 +1,27 @@
+
+collections:
+  - name: customer
+    indexes:
+      - name: tenant
+        keys:
+          - field: tenant
+            type: asc
+      - name: CustomerId
+        unique: true
+        keys:
+          - field: tenant
+            type: asc
+          - field: customer.id
+            type: asc
+      - name: fullText
+        keys:
+          - field: customer.regCountry
+            type: text
+          - field: customer.busCountry
+            type: text
+          - field: customer.tradeCountries
+            type: text
+          - field: customer.payCountries
+            type: text
+          - field: customer.receiveCountries
+            type: text

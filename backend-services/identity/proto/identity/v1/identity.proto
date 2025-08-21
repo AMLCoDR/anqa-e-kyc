@@ -1,0 +1,150 @@
+syntax = "proto3";
+
+package identity.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/timestamp.proto";
+import "vcissuer/v1/vc_issuer.proto";
+// import "validate/validate.proto";
+
+// IdentityService contains rpc methods used to manage a customer's key people.
+// A key identity only exists in the context of a customer — it is effectively
+// the connection between an individual
+service IdentityService {
+  // Create creates an identity for the specified tenant
+  rpc Create(CreateRequest) returns (CreateResponse);
+  // Query supports querying for entities using criteria in the QueryRequest.
+  rpc Query(QueryRequest) returns (QueryResponse) {
+    option (google.api.http) = {
+      get : "/identities/v1"
+    };
+  };
+  // Get retrieves the identity specified in the GetRequest.
+  rpc Get(GetRequest) returns (GetResponse) {
+    option (google.api.http) = {
+      get : "/identities/v1/{identity_id}"
+    };
+  };
+  // Update updates an identity.
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  // Delete deletes the specified identity
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  // AddAlias adds an alias to the specified identity
+  rpc AddAlias(AddAliasRequest) returns (AddAliasResponse);
+  // RemoveAlias removes the specified alias
+  rpc RemoveAlias(RemoveAliasRequest) returns (RemoveAliasResponse);
+  // AddCredential adds a Credential to the specified identity. Credentials are
+  // stored as a map by their unique type (the first type that is not
+  // 'VerifiableCredential') so only the latest of any credential will be
+  // retained.
+  rpc AddCredential(AddCredentialRequest) returns (AddCredentialResponse);
+  // RemoveCredential removes the specified credential
+  rpc RemoveCredential(RemoveCredentialRequest)
+      returns (RemoveCredentialResponse);
+}
+
+// CreateRequest contains information needed to create a new identity.
+message CreateRequest { Identity identity = 1; }
+// CreateResponse returns the newly created identity for the Create method.
+message CreateResponse { Identity identity = 1; }
+
+// QueryRequest represents an identity query with options to filter by
+// free text, and other attributes. Offset and limit are used for
+// response pagination.
+message QueryRequest {
+  int64 offset = 1;
+  int64 limit = 2;
+  string search_text = 3;
+}
+// QueryResponse returns a paged list of identities matching QueryRequest
+// criteria. Matches provides the total number of records matching the query
+// regardless of limit.
+message QueryResponse {
+  repeated Identity cursor = 1;
+  int64 matches = 2;
+}
+
+// GetRequest is used to specify the identity to retrieve.
+message GetRequest { string identity_id = 1; }
+// GetResponse returns a identity based on the identity id
+// provided inthe GetRequest.
+message GetResponse { Identity identity = 1; }
+
+// UpdateRequest is used when calling the Update method. It contains the
+// complete identity to update.
+message UpdateRequest { Identity identity = 1; }
+// UpdateResponse returns the identity updated by the Update method.
+message UpdateResponse { Identity identity = 1; }
+
+// DeleteRequest contains arguments need by the Delete method. Specifically, the
+// id of the identity to delete.
+message DeleteRequest { string identity_id = 1; }
+// DeleteResponse is returned by the Delete method. It is empty so can be safely
+// ignored.
+message DeleteResponse {}
+
+// AddAliasRequest is used by the AddAlias method to specify an alias and
+// identity to add it to.
+message AddAliasRequest {
+  string identity_id = 1;
+  Alias alias = 2;
+}
+// AddAliasResponse is returned by the AddAlias method. It is empty so can be
+// safely ignored.
+message AddAliasResponse {}
+
+// RemoveAliasRequest is used by the RemoveAlias method to specify an alias to
+// remove from an identity.
+message RemoveAliasRequest {
+  string identity_id = 1;
+  string alias_id = 2;
+}
+// RemoveAliasResponse is returned by the RemoveAlias method. It is empty so can
+// be safely ignored.
+message RemoveAliasResponse {}
+
+// AddCredentialRequest is used by the AddCredential method to specify a
+// credential and identity to add it to.
+message AddCredentialRequest {
+  string identity_id = 1;
+  vcissuer.v1.Credential credential = 2;
+}
+// AddCredentialResponse is returned by the AddCredential method. It is empty so
+// can be safely ignored.
+message AddCredentialResponse {}
+
+// RemoveCredentialRequest is used by the RemoveCredential method to specify a
+// credential to remove from an identity.
+message RemoveCredentialRequest {
+  string identity_id = 1;
+  string credential_id = 2;
+}
+// RemoveCredentialResponse is returned by the RemoveCredential method. It is
+// empty so can be safely ignored.
+message RemoveCredentialResponse {}
+
+// Identity represents details of a identity required for CDD.
+message Identity {
+  string id = 1;
+  string given_names = 2;
+  string family_name = 3;
+  repeated Alias aliases = 4;
+  string birth_date = 5;
+  string birth_place = 6;
+  // Sex is the list of values available to use when specifying sex
+  enum Sex {
+    SEX_UNSPECIFIED = 0;
+    SEX_FEMALE = 1;
+    SEX_MALE = 2;
+  }
+  Sex sex = 7;
+  map<string, vcissuer.v1.Credential> credentials = 8;
+}
+
+// Alias is used to record aliases for the base Identity
+message Alias {
+  string id = 1;
+  string given_names = 2;
+  string family_name = 3;
+}

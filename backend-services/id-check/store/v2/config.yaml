@@ -1,0 +1,15 @@
+
+collections:
+  - name: idcheck
+    indexes:
+      - name: tenant
+        keys:
+          - field: tenant
+            type: asc
+      - name: idCheckId
+        unique: true
+        keys:
+          - field: tenant
+            type: asc
+          - field: idCheck.id
+            type: asc

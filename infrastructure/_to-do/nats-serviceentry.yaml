@@ -1,0 +1,33 @@
+
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: nats-server
+spec:
+  hosts:
+  - nats.nats.svc.cluster.local
+  ports:
+  - number: 4222
+    name: tcp
+    protocol: TCP
+  location: MESH_INTERNAL
+  resolution: DNS
+
+---
+
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: nats-server
+spec:
+  hosts:
+  - nats.nats.svc.cluster.local
+  tcp:
+  - match:
+    - port: 4222
+    route:
+    - destination:
+        host: nats.nats.svc.cluster.local
+        port:
+          number: 4222
+      weight: 100
