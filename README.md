@@ -1,13 +1,11 @@
-# Anqa eKYC 2025 - Complete Platform Migration
+# Anqa eKYC 2025
 
 ## Overview
 
-This directory contains the complete migrated eKYC 2025 platform from the Anqa 2021 workspace. The platform is a comprehensive electronic Know Your Customer (KYC) and identity verification system designed for financial institutions and regulated entities.
+The platform is a comprehensive electronic Know Your Customer (KYC) and identity verification system designed for financial institutions and regulated entities.
 
 ## Migration Summary
-
-**Migration Date**: August 21, 2024  
-**Source**: Anqa 2021 workspace  
+ 
 **Status**: Complete migration of all eKYC-related components  
 
 ## Directory Structure
@@ -119,8 +117,6 @@ anqa-e-kyc/
 ### External Service Integrations
 - **Auth0**: Identity and access management
 - **Stripe**: Billing and subscriptions
-- **GBG**: Identity verification services
-- **ActiveCampaign**: Marketing automation
 
 ## Quick Start
 
@@ -322,6 +318,5 @@ This project is proprietary software. Please contact the development team for li
 
 ---
 
-**Migration Completed**: August 21, 2024  
 **Total Components**: 18 services + infrastructure + documentation  
 **Status**: Ready for deployment and testing
