@@ -5,7 +5,7 @@
 
 set -e
 
-echo "🔍 Verifying eKYC Migration..."
+echo "Verifying eKYC Migration..."
 
 # Colors for output
 RED='\033[0;31m'
@@ -87,7 +87,7 @@ check_directory "scripts" "Scripts Directory"
 check_directory "documentation" "Documentation Directory"
 
 echo ""
-echo "🔧 Checking Backend Services..."
+echo "Checking Backend Services..."
 
 # Check backend services
 check_directory "backend-services/kyc-certifier" "KYC Certifier Service"
@@ -104,7 +104,7 @@ check_directory "backend-services/vc-issuer" "VC Issuer Service"
 check_directory "backend-services/mock-data" "Mock Data Service"
 
 echo ""
-echo "🎨 Checking Frontend Applications..."
+echo "Checking Frontend Applications..."
 
 # Check frontend applications
 check_directory "frontend-apps/mfe-certifier" "MFE Certifier App"
@@ -115,7 +115,7 @@ check_directory "frontend-apps/remitter-ux" "Remitter UX App"
 check_directory "frontend-apps/website" "Website App"
 
 echo ""
-echo "🏗️ Checking Shared Framework..."
+echo "Checking Shared Framework..."
 
 # Check shared framework components
 check_directory "shared-framework/flg" "Go Service Framework (flg)"
@@ -124,7 +124,7 @@ check_directory "shared-framework/codec" "Proto BSON Codec"
 check_directory "shared-framework/proto" "Proto BSON Proto"
 
 echo ""
-echo "⚙️ Checking Infrastructure..."
+echo "Checking Infrastructure..."
 
 # Check infrastructure components
 check_directory "infrastructure/modules" "Terraform Modules"
@@ -133,7 +133,7 @@ check_file "infrastructure/main.tf" "Main Terraform Configuration"
 check_file "infrastructure/variables.tf" "Terraform Variables"
 
 echo ""
-echo "🧪 Checking Testing Components..."
+echo "Checking Testing Components..."
 
 # Check testing components
 check_directory "testing" "Mock External Service"
@@ -147,7 +147,7 @@ check_file "README.md" "Main README"
 check_file "documentation/README.md" "eKYC Documentation"
 
 echo ""
-echo "🔍 Checking Critical Files..."
+echo "Checking Critical Files..."
 
 # Check critical files in key services
 check_file "backend-services/kyc-certifier/go.mod" "KYC Certifier Go Module"
@@ -156,7 +156,7 @@ check_file "frontend-apps/mfe-certifier/package.json" "MFE Certifier Package"
 check_file "frontend-apps/mfe-certifier/webpack.config.js" "MFE Certifier Webpack Config"
 
 echo ""
-echo "📊 Migration Verification Summary"
+echo "Migration Verification Summary"
 echo "=================================="
 echo "Total Checks: $total_checks"
 echo "Passed: $passed_checks"
@@ -165,7 +165,7 @@ echo "Success Rate: $(( (passed_checks * 100) / total_checks ))%"
 
 if [ $failed_checks -eq 0 ]; then
     echo ""
-    print_success "🎉 All components migrated successfully!"
+    print_success "All components migrated successfully!"
     echo ""
     echo "✅ Migration Status: COMPLETE"
     echo "Ready for deployment and testing"
@@ -176,10 +176,10 @@ if [ $failed_checks -eq 0 ]; then
     echo "3. Test the platform functionality"
 else
     echo ""
-    print_warning "⚠️ Some components may not have migrated correctly"
+    print_warning "Some components may not have migrated correctly"
     echo ""
     echo "Please review the failed checks above and re-run the migration if needed"
 fi
 
 echo ""
-echo "📋 Migration Verification Complete"
+echo "Migration Verification Complete"

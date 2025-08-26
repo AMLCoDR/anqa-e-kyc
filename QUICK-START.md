@@ -25,7 +25,7 @@ docker-compose --version
 go install github.com/bufbuild/buf/cmd/buf@latest
 ```
 
-## 🏃‍♂️ Quick Start
+## Quick Start Guide
 
 ### 1. Navigate to the Application
 ```bash
@@ -71,7 +71,7 @@ Once started, you can access:
 | **Customer Onboarding** | http://localhost:3219 | Self-service onboarding |
 | **Kibana** | http://localhost:5601 | Monitoring and analytics |
 
-## 🔧 Individual Service Development
+## Individual Service Development
 
 ### Backend Service Development
 
@@ -108,7 +108,7 @@ npm start
 npm run build
 ```
 
-## 🧪 Testing Individual Components
+## Testing Individual Components
 
 ### Test Backend Service
 ```bash
@@ -129,7 +129,7 @@ terraform init
 terraform plan
 ```
 
-## 📊 Monitor Your Services
+## Monitor Your Services
 
 ### Check Service Status
 ```bash
@@ -147,7 +147,7 @@ docker logs ekyc-elasticsearch
 - **MongoDB**: localhost:27017
 - **Elasticsearch**: http://localhost:9200
 
-## 🛠️ Common Development Tasks
+## Common Development Tasks
 
 ### Adding a New Backend Service
 1. Copy an existing service directory
@@ -166,7 +166,7 @@ docker logs ekyc-elasticsearch
 2. Run `buf generate` in service directory
 3. Update frontend gRPC-Web clients if needed
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Service Won't Start
 ```bash
@@ -202,7 +202,7 @@ docker exec -it ekyc-mongodb mongosh
 curl http://localhost:9200/_cluster/health
 ```
 
-## 📚 Next Steps
+## Next Steps
 
 ### Learn More
 - Read the main [README.md](README.md) for comprehensive documentation
@@ -247,6 +247,6 @@ docker logs <service-name>
 
 ---
 
-**🎉 You're all set!** The eKYC application is now ready for development and testing.
+**You're all set!** The eKYC application is now ready for development and testing.
 
 **Next**: Start building features, running tests, or deploying to production!

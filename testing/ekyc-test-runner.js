@@ -26,7 +26,7 @@ class EKYCTestRunner {
       try {
         return JSON.parse(fs.readFileSync(configPath, 'utf8'));
       } catch (error) {
-        console.warn('⚠️  Could not load config file, using defaults');
+        console.warn('Could not load config file, using defaults');
       }
     }
 
@@ -155,7 +155,7 @@ Examples:
    * Run backend tests
    */
   async runBackendTests(options) {
-    console.log('🔧 Running Backend Tests...\n');
+    console.log('Running Backend Tests...\n');
     
     const services = options.service ? [options.service] : this.config.backend.services;
     

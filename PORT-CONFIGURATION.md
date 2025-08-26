@@ -7,9 +7,9 @@
 **New Range**: 3200-3211 (backend), 3215-3220 (frontend)  
 **Update Date**: August 21, 2024  
 
-## 📊 Complete Port Mapping
+## Complete Port Mapping
 
-### 🔧 Backend Services (3200-3211)
+### Backend Services (3200-3211)
 
 | Service | Port | Description | Status |
 |---------|------|-------------|--------|
@@ -26,7 +26,7 @@
 | **VC Issuer** | 3210 | Digital credential issuance | ✅ Updated |
 | **Mock Data** | 3211 | Test data & development | ✅ Updated |
 
-### 🎨 Frontend Applications (3215-3220)
+### Frontend Applications (3215-3220)
 
 | Application | Port | Description | Status |
 |-------------|------|-------------|--------|
@@ -37,7 +37,7 @@
 | **Remitter UX** | 3219 | Customer onboarding | ✅ Updated |
 | **Website** | 3220 | Public website | ✅ Updated |
 
-### ⚙️ Infrastructure Services
+### Infrastructure Services
 
 | Service | Port | Description | Status |
 |---------|------|-------------|--------|
@@ -87,7 +87,7 @@ open http://localhost:3217    # Verification Interface
 open http://localhost:3219    # Customer Onboarding
 ```
 
-## 📝 Configuration Files Updated
+## Configuration Files Updated
 
 ### ✅ Files Modified
 1. **`scripts/setup-ekyc-2025.sh`** - Main setup script
@@ -98,7 +98,7 @@ open http://localhost:3219    # Customer Onboarding
 6. **`FINAL-MIGRATION-REPORT.md`** - Migration report
 7. **`PORT-CONFIGURATION.md`** - This port guide
 
-### 🔧 Environment Variables
+### Environment Variables
 ```bash
 # Backend Service Ports
 CUSTOMER_SERVICE_PORT=3200
@@ -123,7 +123,7 @@ REMITTER_UX_PORT=3219
 WEBSITE_PORT=3220
 ```
 
-## 🧪 Testing Port Configuration
+## Testing Port Configuration
 
 ### Port Availability Check
 ```bash
@@ -146,7 +146,7 @@ for port in {3200..3211}; do
 done
 ```
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Common Port Issues
 1. **Port Already in Use**
@@ -200,14 +200,14 @@ If you need to change ports further:
    ./start-ekyc-2025.sh
    ```
 
-## 📚 Related Documentation
+## Related Documentation
 
 - **README.md** - Complete platform overview
 - **QUICK-START.md** - Get started guide with new ports
 - **setup-ekyc-2025.sh** - Setup script with port configuration
 - **verify-migration.sh** - Migration verification
 
-## 🎯 Next Steps
+## Next Steps
 
 ### Immediate Actions
 1. **Verify Port Configuration**: Check that all ports are available
@@ -226,4 +226,4 @@ If you need to change ports further:
 **Documentation Updated**: 7/7  
 **Ready for Development**: ✅ **YES**  
 
-**🎉 Port configuration update complete! All eKYC services now use the 3200+ range.**
+**Port configuration update complete! All eKYC services now use the 3200+ range.**
