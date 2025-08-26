@@ -16,7 +16,8 @@
 - **Professional Interface**: Material-UI design with consistent styling
 - **Progress Tracking**: Visual feedback during all operations
 - **Toast Notifications**: Non-intrusive user feedback system
-- **Document Overview**: Comprehensive status dashboard
+- **Document Overview**: Comprehensive status dashboard  
+>>>>>>> 79dc8293a1256dc4548c0613e8848608a78b4247
 
 ### 🏗️ **Architecture**
 - **Microservices**: 12 Go-based backend services
@@ -50,7 +51,43 @@ Unlike typical applications that have great demos but poor production UX, **Anqa
 - MongoDB 6+
 - Podman/Docker
 
+<<<<<<< HEAD
 ### **Installation**
+=======
+### 4. Security & Privacy
+- End-to-end encryption
+- Secure data storage
+- Role-based access control
+- GDPR and privacy compliance
+
+### 5. Multi-tenant Architecture
+- Isolated tenant environments
+- Organization onboarding
+- Subscription management
+- User administration
+
+## Service Dependencies
+
+### Core Dependencies
+- **go-svc**: Shared Go service framework
+- **proto-bson**: Protocol Buffer + BSON support
+- **MongoDB**: Document database
+- **Elasticsearch**: Search and analytics
+- **gRPC**: Inter-service communication
+
+### External Service Integrations
+- **Auth0**: Identity and access management
+- **Stripe**: Billing and subscriptions
+
+## Quick Start
+
+### Prerequisites
+- Docker and Docker Compose
+- Go 1.17+
+- Node.js 16+
+- buf (Protocol Buffer tool)
+
+### 1. Start Infrastructure
 ```bash
 # Clone the repository
 git clone https://github.com/AMLCoDR/anqa-e-kyc.git
@@ -229,6 +266,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+<<<<<<< HEAD
 **Built with ❤️ by the Anqa Team**
 
 *Transforming eKYC from functional to phenomenal*
+=======
+**Total Components**: 18 services + infrastructure + documentation  
+**Status**: Ready for deployment and testing
+>>>>>>> 79dc8293a1256dc4548c0613e8848608a78b4247
