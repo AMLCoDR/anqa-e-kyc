@@ -1,4 +1,4 @@
-# 🚀 Enhanced eKYC OCR Features
+# Enhanced eKYC OCR Features
 
 ## Overview
 This document details all the enhanced features implemented in Anqa's proprietary OCR service, replacing the previous GBG integration with enterprise-grade, production-ready functionality.
@@ -298,7 +298,7 @@ setDebugMode(enabled)
 }
 ```
 
-## 🚀 **Deployment & Operations**
+## **Deployment & Operations**
 
 ### **Prerequisites**
 - **Tesseract**: OCR engine installation

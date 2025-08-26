@@ -433,7 +433,7 @@ func main() {
 	}
 
 	// Run the test suite
-	fmt.Println("🚀 Running eKYC Backend Test Suite...")
+	fmt.Println("Running eKYC Backend Test Suite...")
 
 	// Create test suite
 	ts := new(EKYCTestSuite)

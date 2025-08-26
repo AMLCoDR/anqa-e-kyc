@@ -1,4 +1,4 @@
-# 🚀 eKYC Platform Testing Suite
+# eKYC Platform Testing Suite
 
 A comprehensive testing framework for the eKYC (electronic Know Your Customer) platform. This suite provides extensive testing capabilities for backend Go microservices, frontend Webpack applications, integration testing, and performance validation.
 
@@ -21,7 +21,7 @@ A comprehensive testing framework for the eKYC (electronic Know Your Customer) p
 - **MongoDB** for database testing
 - **Podman** (optional) for containerized testing
 
-## 🚀 Installation
+## Installation
 
 1. Navigate to the testing directory:
 ```bash
@@ -345,7 +345,7 @@ MIT License - see LICENSE file for details.
 - **Compliance**: Validate regulatory requirements
 - **Performance**: Benchmark and optimize system performance
 
-## 🚀 Quick Start Examples
+## Quick Start Examples
 
 ### Run Smoke Tests
 ```bash
@@ -379,4 +379,4 @@ npm run clean
 
 ---
 
-**Happy Testing! 🚀✨**
+**Happy Testing! ✨**

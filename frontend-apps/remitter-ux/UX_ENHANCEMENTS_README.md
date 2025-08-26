@@ -1,4 +1,4 @@
-# 🚀 eKYC Platform UX Enhancements
+# eKYC Platform UX Enhancements
 
 ## Overview
 This document details all the user experience enhancements that have been implemented in the real eKYC application, bringing the polished demo experience to production.
@@ -133,7 +133,7 @@ showSuccessToast('Operation completed!');
 - **After**: Consistent Material-UI design with proper spacing, colors, and typography
 - **Impact**: Professional, polished appearance that builds user trust
 
-## 🚀 **Performance & Technical Benefits**
+## **Performance & Technical Benefits**
 
 ### **1. Better State Management**
 - Centralized state for document processing

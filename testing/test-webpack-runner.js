@@ -243,7 +243,7 @@ class WebpackTestRunner {
    * Run all webpack tests
    */
   async runAllTests() {
-    console.log('🚀 Starting Webpack Test Suite...\n');
+    console.log('Starting Webpack Test Suite...\n');
     
     try {
       this.testWebpackBasics();

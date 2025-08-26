@@ -168,7 +168,7 @@ if [ $failed_checks -eq 0 ]; then
     print_success "🎉 All components migrated successfully!"
     echo ""
     echo "✅ Migration Status: COMPLETE"
-    echo "🚀 Ready for deployment and testing"
+    echo "Ready for deployment and testing"
     echo ""
     echo "Next steps:"
     echo "1. Review the migrated components"

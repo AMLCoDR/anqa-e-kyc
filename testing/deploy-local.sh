@@ -3,7 +3,7 @@
 # eKYC Testing Suite - Local Deployment Script
 # Deploys the testing suite on localhost:3200
 
-echo "🚀 Deploying eKYC Testing Suite on localhost:3200..."
+echo "Deploying eKYC Testing Suite on localhost:3200..."
 
 # Check if webpack is available
 if ! command -v webpack &> /dev/null; then

@@ -1,4 +1,4 @@
-# 🚀 eKYC Platform Demo Script
+# eKYC Platform Demo Script
 ## Comprehensive Platform Showcase for Prospects
 
 ---
@@ -170,7 +170,7 @@
 
 ---
 
-## 🚀 **Implementation & Integration (3 minutes)**
+## **Implementation & Integration (3 minutes)**
 
 ### **"Getting Started is Simpler Than You Think"**
 
@@ -292,4 +292,4 @@
 
 ---
 
-**Remember**: The goal is to show prospects not just what your platform does, but how it transforms their business. Focus on business value, not just technical features. Make them see the future of their operations with your eKYC platform! 🚀
+**Remember**: The goal is to show prospects not just what your platform does, but how it transforms their business. Focus on business value, not just technical features. Make them see the future of their operations with your eKYC platform!

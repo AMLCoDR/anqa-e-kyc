@@ -59,7 +59,7 @@
 - **Scalability**: Room for additional services in the range
 - **Consistency**: All eKYC services now use 3200+ range
 
-## 🚀 Quick Access URLs
+## Quick Access URLs
 
 ### Backend API Endpoints
 ```bash

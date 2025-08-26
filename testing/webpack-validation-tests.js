@@ -354,7 +354,7 @@ class WebpackValidationTests {
    * Run all validation tests
    */
   async runAllValidations() {
-    console.log('🚀 Starting Webpack Validation Suite...\n');
+    console.log('Starting Webpack Validation Suite...\n');
     
     try {
       this.validateBuildOutput();

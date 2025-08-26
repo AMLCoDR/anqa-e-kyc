@@ -1,6 +1,6 @@
 # eKYC Application - Quick Start Guide
 
-## 🚀 Get Started in 5 Minutes
+## Get Started in 5 Minutes
 
 This guide will get you up and running with the migrated eKYC application quickly.
 

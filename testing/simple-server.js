@@ -111,7 +111,7 @@ const server = http.createServer((req, res) => {
 
 // Start the server
 server.listen(PORT, () => {
-  console.log('🚀 eKYC Platform Demo Server Started!');
+  console.log('eKYC Platform Demo Server Started!');
   console.log('📱 Access your demo application at: http://localhost:3200');
   console.log('🔧 API endpoints:');
   console.log('   - GET /api/status - Server status');

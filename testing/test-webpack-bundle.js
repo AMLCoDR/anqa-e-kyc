@@ -352,7 +352,7 @@ class WebpackBundleTestRunner {
    * Run all bundle tests
    */
   async runAllTests() {
-    console.log('🚀 Starting Webpack Bundle Test Suite...\n');
+    console.log('Starting Webpack Bundle Test Suite...\n');
     
     try {
       this.testBuildSuccess();

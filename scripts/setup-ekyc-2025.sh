@@ -5,7 +5,7 @@
 
 set -e
 
-echo "🚀 Starting eKYC 2025 Complete Platform Setup from Anqa 2021..."
+echo "Starting eKYC 2025 Complete Platform Setup from Anqa 2021..."
 
 # Colors for output
 RED='\033[0;31m'
@@ -627,7 +627,7 @@ create_startup_script() {
 
 # eKYC 2025 Startup Script
 
-echo "🚀 Starting eKYC 2025 Complete Platform..."
+echo "Starting eKYC 2025 Complete Platform..."
 
 # Load environment variables
 source .env

@@ -73,7 +73,7 @@ anqa-e-kyc/
 └── documentation/            # Platform documentation
 ```
 
-### 🚀 Key Features
+### Key Features
 
 #### Digital Onboarding
 - Self-service onboarding process
@@ -206,7 +206,7 @@ anqa-e-kyc/
 - Verification procedures
 - Next steps and recommendations
 
-### 🚀 Getting Started
+### Getting Started
 
 #### Prerequisites
 - Docker and Docker Compose

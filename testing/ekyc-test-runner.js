@@ -104,7 +104,7 @@ class EKYCTestRunner {
    */
   showHelp() {
     console.log(`
-🚀 eKYC Platform Test Runner
+eKYC Platform Test Runner
 
 Usage: node ekyc-test-runner.js [options]
 
@@ -516,7 +516,7 @@ Examples:
         return;
       }
 
-      console.log('🚀 eKYC Platform Test Runner Starting...\n');
+      console.log('eKYC Platform Test Runner Starting...\n');
       
       // Run tests based on type
       switch (options.type) {

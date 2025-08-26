@@ -8,7 +8,7 @@ const NASATestingSuite = require('./nasa-testing-suite');
  */
 
 async function main() {
-  console.log('🚀 NASA Testing Suite Runner\n');
+  console.log('NASA Testing Suite Runner\n');
   
   // Configuration
   const config = {
